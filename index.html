@@ -21,38 +21,41 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800,900&family=Poppins:wght@300;400;500;600;700;800,900&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
 			rel="stylesheet"
 		/>
 
 		<style>
-			body {
-				font-family: "Open Sans", sans-serif;
-				/* font-family: "Poppins", sans-serif; */
+			* {
+				font-family: "Poppins", sans-serif;
 			}
 		</style>
 	</head>
 	<body class="bg-zinc-900 text-gray-50 px-4 py-6">
-		<header class="flex justify-between items-center">
-			<h1 class="font-bold text-xl"><span class="fa fa-user-circle mr-2 text-white"></span> My Portfolio</h1>
+		<header class="flex justify-between items-center max-w-7xl mx-auto">
+			<h1 class="font-bold text-xl lg:text-2xl">
+				<span class="fa fa-user-circle mr-2 text-white"></span> My Portfolio
+			</h1>
 
 			<span class="fa fa-align-right"></span>
 		</header>
-		<section class="mt-10">
-			<div class="max-w-6xl mx-auto grid gap-8">
+
+		<!-- hero section -->
+		<section class="py-10 lg:py-20">
+			<div class="max-w-6xl mx-auto grid gap-8 lg:grid-cols-2 lg:gap-x-10 lg:items-center">
 				<img
 					src="/assets/me.jpg"
 					alt=""
-					class="w-80 h-80 rounded-full mx-auto object-cover border-8 border-fuchsia-950"
+					class="w-80 h-80 lg:h-[28rem] lg:w-[28rem] rounded-full mx-auto object-cover border-8 border-fuchsia-950 lg:order-2"
 				/>
 
 				<div>
-					<h1 class="font-black text-4xl">I'm <span class="text-fuchsia-700">Ajonye Paul</span></h1>
-					<p class="text-lg font-medium mt-2">
+					<h1 class="font-black text-4xl lg:text-6xl">I'm <span class="text-fuchsia-700">Ajonye Paul</span></h1>
+					<p class="text-lg font-medium mt-2 lg:text-xl lg:mt-6">
 						A Senior full stack web and mobile app developer with over 5 years of experience.
 					</p>
 
-					<ul class="flex items-center space-x-5 text-2xl mt-4">
+					<ul class="flex items-center space-x-5 text-2xl lg:text-4xl mt-4 lg:mt-8">
 						<li>
 							<a href="#"><span class="fab fa-github text-white"></span></a>
 						</li>
@@ -71,8 +74,106 @@
 					</ul>
 
 					<a href="" class="inline-block text-white border-2 border-fuchsia-700 p-1 rounded-md mt-6">
-						<button class="bg-fuchsia-800 px-10 py-3 -mb-4 -mr-4 rounded-md text-sm font-medium">Contact me</button>
+						<button
+							class="bg-fuchsia-800 px-10 py-3 -mb-4 -mr-4 rounded-md text-sm font-medium lg:text-base lg:px-14 lg:py-4"
+						>
+							Contact me
+						</button>
 					</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- tech stack -->
+		<section class="py-14 lg:py-20">
+			<h2 class="text-2xl font-semibold lg:text-center lg:text-4xl w-fit lg:mx-auto relative pb-5">
+				My Services
+				<span class="w-20 h-2 bg-fuchsia-600 inline-block rounded-md absolute bottom-0 left-0"></span>
+			</h2>
+
+			<div class="grid lg:grid-cols-3 gap-8 lg:gap-x-10 mt-8 lg:mt-14 max-w-7xl mx-auto">
+				<div class="bg-zinc-800 p-6 rounded-md">
+					<img src="/assets/fontend.png" alt="" class="h-32" />
+					<h4 class="font-semibold mt-2 text-xl uppercase lg:mt-8">Frontend Development</h4>
+					<p class="mt-4 font-medium leading-7 text-gray-300 opacity-70 lg:mt-10">
+						Experience in crafting captivating user interfaces to drive engagement and enhance user experience,
+						delivering visually compelling solutions.
+					</p>
+				</div>
+				<div class="bg-zinc-800 p-6 rounded-md">
+					<img src="/assets/backend.png" alt="" class="h-32" />
+					<h4 class="font-semibold mt-2 text-xl uppercase lg:mt-8">Backend Development</h4>
+					<p class="mt-4 font-medium leading-7 text-gray-300 opacity-70 lg:mt-10">
+						Proficient in developing robust backend systems to ensure smooth operations, data integrity, and
+						high-performance functionalities, essential for a seamless user experience.
+					</p>
+				</div>
+				<div class="bg-zinc-800 p-6 rounded-md">
+					<img src="/assets/moile-app.png" alt="" class="h-32" />
+					<h4 class="font-semibold mt-2 text-xl uppercase lg:mt-8">Mobile app Development</h4>
+					<p class="mt-4 font-medium leading-7 text-gray-300 opacity-70 lg:mt-10">
+						Skilled in creating high-performance cross-platfrom mobile applications, ensuring user satisfaction and
+						business growth through intuitive and functional mobile solutions.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- tech stack -->
+		<section class="py-14">
+			<h2 class="text-2xl font-semibold lg:text-center lg:text-4xl w-fit lg:mx-auto relative pb-5">
+				Tech Stack
+				<span class="w-20 h-2 bg-fuchsia-600 inline-block rounded-md absolute bottom-0 left-0"></span>
+			</h2>
+
+			<div class="grid grid-cols-2 gap-6 mt-8 max-w-6xl mx-auto lg:grid-cols-4 lg:gap-10 lg:mt-14">
+				<div class="bg-zinc-800 p-4 lg:p-6 rounded-md">
+					<img src="/assets/html-5.png" alt="" class="h-16 lg:h-20 mx-auto" />
+					<h4 class="font-medium text-center mt-2">HTML</h4>
+				</div>
+				<div class="bg-zinc-800 p-4 lg:p-6 rounded-md">
+					<img src="/assets/css.png" alt="" class="h-16 lg:h-20 mx-auto" />
+					<h4 class="font-medium text-center mt-2">CSS</h4>
+				</div>
+				<div class="bg-zinc-800 p-4 lg:p-6 rounded-md">
+					<img src="/assets/js.png" alt="" class="h-16 lg:h-20 mx-auto" />
+					<h4 class="font-medium text-center mt-2">Javascript</h4>
+				</div>
+				<div class="bg-zinc-800 p-4 lg:p-6 rounded-md">
+					<img src="/assets/tailwindcss.svg" alt="" class="h-16 lg:h-20 mx-auto" />
+					<h4 class="font-medium text-center mt-2">Tailwind CSS</h4>
+				</div>
+				<div class="bg-zinc-800 p-4 lg:p-6 rounded-md">
+					<img src="/assets/typescript.png" alt="" class="h-16 lg:h-20 mx-auto" />
+					<h4 class="font-medium text-center mt-2">Typescript</h4>
+				</div>
+				<div class="bg-zinc-800 p-4 lg:p-6 rounded-md">
+					<img src="/assets/python.png" alt="" class="h-16 lg:h-20 mx-auto" />
+					<h4 class="font-medium text-center mt-2">Python</h4>
+				</div>
+				<div class="bg-zinc-800 p-4 lg:p-6 rounded-md">
+					<img src="/assets/science.png" alt="" class="h-16 lg:h-20 mx-auto" />
+					<h4 class="font-medium text-center mt-2">Reatjs/React Native</h4>
+				</div>
+				<div class="bg-zinc-800 p-4 lg:p-6 rounded-md">
+					<img src="/assets/php.png" alt="" class="h-16 lg:h-20 mx-auto" />
+					<h4 class="font-medium text-center mt-2">PHP</h4>
+				</div>
+				<div class="bg-zinc-800 p-4 lg:p-6 rounded-md">
+					<img src="/assets/laravel.png" alt="" class="h-16 lg:h-20 mx-auto" />
+					<h4 class="font-medium text-center mt-2">Laravel</h4>
+				</div>
+				<div class="bg-zinc-800 p-4 lg:p-6 rounded-md">
+					<img src="/assets/mysql.png" alt="" class="h-16 lg:h-20 mx-auto" />
+					<h4 class="font-medium text-center mt-2">MySQL</h4>
+				</div>
+				<div class="bg-zinc-800 p-4 lg:p-6 rounded-md">
+					<img src="/assets/cloud-storage.png" alt="" class="h-16 lg:h-20 mx-auto" />
+					<h4 class="font-medium text-center mt-2">Cloud Computing</h4>
+				</div>
+				<div class="bg-zinc-800 p-4 lg:p-6 rounded-md">
+					<img src="/assets/git.png" alt="" class="h-16 lg:h-20 mx-auto" />
+					<h4 class="font-medium text-center mt-2">Version control</h4>
 				</div>
 			</div>
 		</section>
