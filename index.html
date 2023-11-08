@@ -25,9 +25,16 @@
 			rel="stylesheet"
 		/>
 
+		<!-- alpine js -->
+		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
 		<style>
 			* {
 				font-family: "Poppins", sans-serif;
+			}
+
+			[x-cloak] {
+				display: none;
 			}
 		</style>
 	</head>
@@ -177,5 +184,121 @@
 				</div>
 			</div>
 		</section>
+
+		<!-- tech stack -->
+		<section class="py-14">
+			<h2 class="text-2xl font-semibold lg:text-center lg:text-4xl w-fit lg:mx-auto relative pb-5">
+				Projects
+				<span class="w-20 h-2 bg-fuchsia-600 inline-block rounded-md absolute bottom-0 left-0"></span>
+			</h2>
+
+			<div class="grid gap-6 mt-8 max-w-7xl mx-auto lg:grid-cols-3 lg:gap-10 lg:mt-14" x-data="projects">
+				<template x-for="(project, index) in projects" :key="index">
+					<div class="bg-zinc-800 rounded-md">
+						<img :src="project.img" alt="" srcset="" class="h-52 lg:h-64 object-cover w-full rounded-t-md" />
+						<div class="p-3">
+							<h3 x-text="project.title" class="text-xl font-semibold"></h3>
+							<p x-text="project.desc" class="text-gray-300 opacity-70 mt-3"></p>
+
+							<ul class="flex items-center mt-3 space-x-2">
+								<template x-for="(language, index) in project.stack" :key="index">
+									<li x-text="language" class="bg-gray-900 px-2 py-1 rounded-md text-xs"></li>
+								</template>
+							</ul>
+
+							<div class="grid grid-cols-2 gap-x-4 mt-4">
+								<a
+									x-show="project.url"
+									:href="project.url"
+									x-cloak
+									target="_blank"
+									class="bg-zinc-900 px-4 py-3 rounded-md block text-center text-sm"
+								>
+									<span class="fa fa-eye mr-2"></span>
+									Preview
+								</a>
+								<a
+									x-show="project.code"
+									:href="project.code"
+									x-cloak
+									target="_blank"
+									class="bg-zinc-900 px-4 py-3 rounded-md block text-center text-sm"
+								>
+									<span class="fa fa-code mr-2"></span>
+									Code
+								</a>
+							</div>
+						</div>
+					</div>
+				</template>
+			</div>
+		</section>
+
+		<script>
+			document.addEventListener("alpine:init", () => {
+				Alpine.data("projects", () => ({
+					projects: [
+						{
+							title: "Citardel",
+							desc: "An Online digital library for students to access learning materials.",
+							img: "/assets/citardel.png",
+							url: "https://citardel.com",
+							category: "website",
+							stack: ["laravel", "mysql", "Tailwind CSS", "AWS EC2"],
+						},
+						{
+							title: "Tely App",
+							desc: "A mobile app that shows users the telecom network of each of their contacts.",
+							img: "/assets/tely.webp",
+							url: "https://play.google.com/store/apps/details?id=com.paulchase.connet",
+							category: "app",
+							stack: ["React Native", "Tailwind CSS"],
+						},
+						{
+							title: "Marble Game",
+							desc: "A mobile game that a user plays offline to guess if a number is odd or even. Inspiration gotten from Squid game",
+							img: "/assets/marble.webp",
+							url: "https://play.google.com/store/apps/details?id=com.paulstack.Ali",
+							category: "app",
+							stack: ["React Native", "Tailwind CSS"],
+							code: "https://github.com/PaulChase/marble_game",
+						},
+						{
+							title: "HR56",
+							desc: "A fully fledged SaaS product that streamlines the process of hiring, onboarding and managing empoyees of a company or other companies",
+							img: "/assets/hr56.png",
+							url: "https://hr56.org",
+							category: "website",
+							stack: ["React Js", "Tailwind CSS", "Laravel", "Inertiajs", "MySQL"],
+						},
+						{
+							title: "Cliento",
+							desc: "A full stack application that allows freelancers to manage their projects and clients in a single dashbaord.",
+							img: "/assets/cliento.png",
+							category: "website",
+							stack: ["Next Js", "Tailwind CSS", "Laravel", "GraphQL", "MySQL"],
+							code: "https://github.com/PaulChase/graphQL-project-mgmt-app",
+						},
+						{
+							title: "NerdStack",
+							desc: "A twiiter clone for developers and tech geeks with authentication and hierachy structure of the tweets in the database",
+							img: "/assets/nerdstack.png",
+							category: "website",
+							stack: ["React Js", "Tailwind CSS", "Laravel", "MySQL", "REST API"],
+							code: "https://github.com/PaulChase/twitter_clone",
+						},
+						{
+							title: "Spend Buddy",
+							desc: "A mobile app that allows users to record and track their expenses to as to cultivate a saving culture.",
+							img: "/assets/expense.webp",
+							url: "https://play.google.com/store/apps/details?id=com.paulstack.spendbuddy",
+							category: "app",
+							stack: ["React Native", "Tailwind CSS"],
+							code: "https://github.com/PaulChase/expense-app",
+						},
+					],
+				}));
+			});
+		</script>
 	</body>
 </html>
