@@ -95,13 +95,26 @@
 						</li>
 					</ul>
 
-					<a href="#contact" class="inline-block text-white border-2 border-fuchsia-700 p-1 rounded-md mt-6">
-						<button
-							class="bg-fuchsia-800 px-10 py-3 -mb-4 -mr-4 rounded-md text-sm font-medium lg:text-base lg:px-14 lg:py-4"
+					<div class="flex items-center space-x-6">
+						<a href="#contact" class="inline-block text-white border-2 border-fuchsia-700 p-1 rounded-md mt-6">
+							<button
+								class="bg-fuchsia-800 px-10 py-3 -mb-4 -mr-4 rounded-md text-sm font-medium lg:text-base lg:px-14 lg:py-4"
+							>
+								Contact me
+							</button>
+						</a>
+						<a
+							href="/assets/resume.pdf"
+							class="inline-block text-fuchsia-700 border-2 border-white p-1 rounded-md mt-6"
+							target="_blank"
 						>
-							Contact me
-						</button>
-					</a>
+							<button
+								class="bg-white px-10 py-3 -mb-4 -mr-4 rounded-md text-sm font-medium lg:text-base lg:px-14 lg:py-4"
+							>
+								Download CV
+							</button>
+						</a>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -204,7 +217,7 @@
 		<section
 			class="py-14"
 			x-data="projects"
-			x-init="$watch('filter', value => projects = value != '' ? inMemoryProjects.filter(project => project.category ===value) : inMemoryProjects) "
+			x-init="$watch('filter', value => projects = value != '' ? inMemoryProjects.filter(project => project.category.includes(value)) : inMemoryProjects) "
 		>
 			<h2 class="text-2xl font-semibold lg:text-center lg:text-4xl w-fit lg:mx-auto relative pb-5">
 				Projects
@@ -212,7 +225,7 @@
 			</h2>
 
 			<div>
-				<ul class="flex justify-center items-center mt-8 lg:mt-14">
+				<ul class="flex justify-center items-center mt-8 lg:mt-14 whitespace-nowrap overflow-x-auto">
 					<li class="">
 						<button
 							class="bg-zinc-900 px-4 py-2 rounded-md text-xs lg:text-sm"
@@ -222,6 +235,16 @@
 							All
 						</button>
 					</li>
+					<li class="">
+						<button
+							class="bg-zinc-900 px-4 py-2 rounded-md text-xs lg:text-sm"
+							x-bind:class="{'bg-fuchsia-700': filter === 'Personal'}"
+							x-on:click="filter = 'Personal'"
+						>
+							Personal
+						</button>
+					</li>
+
 					<li class="">
 						<button
 							class="bg-zinc-900 px-4 py-2 rounded-md text-xs lg:text-sm"
@@ -248,7 +271,21 @@
 					<div class="bg-zinc-800 rounded-md">
 						<img :src="project.img" alt="" srcset="" class="h-52 lg:h-64 object-cover w-full rounded-t-md" />
 						<div class="p-3">
-							<h3 x-text="project.title" class="text-lg md:text-xl font-semibold"></h3>
+							<div class="flex justify-between items-center">
+								<h3 x-text="project.title" class="text-lg md:text-xl lg:text-2xl font-semibold"></h3>
+								<span
+									x-show="project.category.includes('Personal')"
+									x-cloak
+									class="text-xs lg:text-sm font-medium text-gray-300"
+									>#Personal</span
+								>
+								<span
+									x-show="project.category.includes('Company')"
+									x-cloak
+									class="text-xs lg:text-sm font-medium text-gray-300"
+									>#Company</span
+								>
+							</div>
 							<p x-text="project.desc" class="text-gray-300 opacity-70 mt-3 text-sm md:text-base"></p>
 
 							<ul class="flex flex-wrap items-center mt-3 gap-2">
@@ -385,7 +422,6 @@
 					email: "",
 					message: "",
 					handleSubmit() {
-						//console.log(this.name, this.email, this.message);
 						window.location = `https://wa.me/2347040214836?text="Hello Paul, \n name: ${this.name} \n email: ${this.email} \n message: ${this.message}"`;
 					},
 				}));
