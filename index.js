@@ -42,7 +42,7 @@ const myProjects = [
 	},
 	{
 		title: "NerdStack",
-		desc: "A twiiter clone for developers and tech geeks with authentication and hierachy structure of the tweets in the database",
+		desc: "A twitter clone for developers and tech geeks with authentication and hierachy structure of the tweets in the database",
 		img: "/assets/nerdstack.png",
 		category: ["website", "Personal"],
 		stack: ["React Js", "Tailwind CSS", "Laravel", "MySQL", "REST API"],
