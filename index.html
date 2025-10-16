@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Ajonye Paul's portfolio</title>
+		<title>Ajonye Paul - Full Stack Developer</title>
 
 		<link rel="stylesheet" href="/dist/output.css" />
 
@@ -17,25 +17,21 @@
 		/>
 
 		<!-- google fonts -->
-
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
 			rel="stylesheet"
 		/>
 
-		<link
-			href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Raleway:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap"
-			rel="stylesheet"
-		/>
+		<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
 
 		<!-- alpine js -->
 		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 		<style>
 			* {
-				font-family: "Poppins", sans-serif;
+				font-family: "Inter", sans-serif;
 			}
 
 			h1,
@@ -44,389 +40,1271 @@
 			h4,
 			h5,
 			h6 {
-				font-family: "Raleway", sans-serif;
+				font-family: "Space Grotesk", sans-serif;
 			}
 
 			[x-cloak] {
 				display: none;
 			}
+
+			/* Custom Scrollbar */
+			::-webkit-scrollbar {
+				width: 8px;
+			}
+
+			::-webkit-scrollbar-track {
+				background: #0a0a0a;
+			}
+
+			::-webkit-scrollbar-thumb {
+				background: linear-gradient(180deg, #06b6d4, #8b5cf6);
+				border-radius: 10px;
+			}
+
+			::-webkit-scrollbar-thumb:hover {
+				background: linear-gradient(180deg, #8b5cf6, #ec4899);
+			}
+
+			/* Custom Cursor */
+			body {
+				cursor: none;
+			}
+
+			a,
+			button {
+				cursor: none;
+			}
+
+			.cursor-dot {
+				width: 8px;
+				height: 8px;
+				background: linear-gradient(135deg, #06b6d4, #8b5cf6);
+				border-radius: 50%;
+				position: fixed;
+				pointer-events: none;
+				z-index: 9999;
+				transition: transform 0.15s ease;
+				mix-blend-mode: difference;
+			}
+
+			.cursor-outline {
+				width: 40px;
+				height: 40px;
+				border: 2px solid rgba(139, 92, 246, 0.5);
+				border-radius: 50%;
+				position: fixed;
+				pointer-events: none;
+				z-index: 9998;
+				transition: all 0.15s ease;
+				mix-blend-mode: difference;
+			}
+
+			.cursor-outline.hover {
+				width: 60px;
+				height: 60px;
+				border-color: rgba(236, 72, 153, 0.8);
+			}
+
+			/* Animated Background */
+			.animated-bg {
+				background: linear-gradient(125deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+				background-size: 400% 400%;
+				animation: gradientShift 15s ease infinite;
+			}
+
+			@keyframes gradientShift {
+				0%,
+				100% {
+					background-position: 0% 50%;
+				}
+				50% {
+					background-position: 100% 50%;
+				}
+			}
+
+			/* Particle Background */
+			#particles {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				pointer-events: none;
+				z-index: 0;
+			}
+
+			.particle {
+				position: absolute;
+				background: radial-gradient(circle, rgba(139, 92, 246, 0.8), transparent);
+				border-radius: 50%;
+				animation: float 20s infinite;
+			}
+
+			@keyframes float {
+				0%,
+				100% {
+					transform: translateY(0) translateX(0);
+				}
+				25% {
+					transform: translateY(-100px) translateX(50px);
+				}
+				50% {
+					transform: translateY(-50px) translateX(-30px);
+				}
+				75% {
+					transform: translateY(-80px) translateX(70px);
+				}
+			}
+
+			/* Glassmorphism */
+			.glass {
+				background: rgba(255, 255, 255, 0.03);
+				backdrop-filter: blur(10px);
+				-webkit-backdrop-filter: blur(10px);
+				border: 1px solid rgba(255, 255, 255, 0.05);
+			}
+
+			.glass-hover {
+				transition: all 0.3s ease;
+			}
+
+			.glass-hover:hover {
+				background: rgba(255, 255, 255, 0.05);
+				border-color: rgba(139, 92, 246, 0.3);
+				transform: translateY(-5px);
+				box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
+			}
+
+			/* Glow Effect */
+			.glow {
+				text-shadow: 0 0 20px rgba(139, 92, 246, 0.5), 0 0 40px rgba(139, 92, 246, 0.3);
+			}
+
+			.glow-border {
+				box-shadow: 0 0 20px rgba(139, 92, 246, 0.4), inset 0 0 20px rgba(139, 92, 246, 0.1);
+			}
+
+			/* Animated Gradient Text */
+			.gradient-text {
+				background: linear-gradient(90deg, #06b6d4, #8b5cf6, #ec4899);
+				background-size: 200% auto;
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+				animation: gradientFlow 3s linear infinite;
+			}
+
+			@keyframes gradientFlow {
+				to {
+					background-position: 200% center;
+				}
+			}
+
+			/* Fade In Animations */
+			.fade-in {
+				opacity: 0;
+				transform: translateY(30px);
+				transition: all 0.6s ease;
+			}
+
+			.fade-in.visible {
+				opacity: 1;
+				transform: translateY(0);
+			}
+
+			/* 3D Card Effect */
+			.card-3d {
+				transform-style: preserve-3d;
+				transition: transform 0.3s ease;
+			}
+
+			.card-3d:hover {
+				transform: rotateY(5deg) rotateX(5deg);
+			}
+
+			/* Floating Animation */
+			.float {
+				animation: floating 6s ease-in-out infinite;
+			}
+
+			@keyframes floating {
+				0%,
+				100% {
+					transform: translateY(0px);
+				}
+				50% {
+					transform: translateY(-20px);
+				}
+			}
+
+			/* Typing Effect */
+			.typing {
+				border-right: 2px solid #8b5cf6;
+				animation: blink 0.7s step-end infinite;
+			}
+
+			@keyframes blink {
+				from,
+				to {
+					border-color: transparent;
+				}
+				50% {
+					border-color: #8b5cf6;
+				}
+			}
+
+			/* Neon Button */
+			.neon-button {
+				position: relative;
+				overflow: hidden;
+			}
+
+			.neon-button::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+				transition: left 0.5s;
+			}
+
+			.neon-button:hover::before {
+				left: 100%;
+			}
+
+			/* Mobile Responsive Cursor */
+			@media (max-width: 768px) {
+				body {
+					cursor: auto;
+				}
+
+				.cursor-dot,
+				.cursor-outline {
+					display: none;
+				}
+			}
 		</style>
 
 		<script src="./index.js"></script>
 	</head>
-	<body class="bg-zinc-900 text-gray-50 px-4 py-6">
-		<header class="flex justify-between items-center max-w-7xl mx-auto">
-			<h1 class="font-bold text-xl lg:text-2xl">
-				<span class="fa fa-user-circle mr-2 text-white"></span> My Portfolio
-			</h1>
+	<body class="animated-bg text-gray-50 overflow-x-hidden" x-data="app" x-init="init()">
+		<!-- Custom Cursor -->
+		<div class="cursor-dot" x-ref="cursorDot"></div>
+		<div class="cursor-outline" x-ref="cursorOutline" :class="{ 'hover': isHovering }"></div>
 
-			<span class="fa fa-align-right"></span>
-		</header>
+		<!-- Particle Background -->
+		<div id="particles"></div>
 
-		<!-- hero section -->
-		<section class="py-16 lg:py-20">
-			<div class="max-w-6xl mx-auto">
-				<!-- <img
-					src="/assets/me.jpg"
-					alt=""
-					class="w-80 h-80 lg:h-[28rem] lg:w-[28rem] rounded-full mx-auto object-cover border-8 border-fuchsia-950 lg:order-2"
-				/> -->
+		<!-- Navigation -->
+		<nav class="fixed top-0 left-0 right-0 z-50 glass" x-data="{ mobileMenuOpen: false }">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="flex justify-between items-center h-20">
+					<!-- Logo -->
+					<div class="flex-shrink-0">
+						<h1 class="font-bold text-2xl gradient-text">&lt;AP /&gt;</h1>
+					</div>
 
-				<div class="w-fit lg:mx-auto lg:text-center">
-					<h1 class="font-black text-4xl lg:text-6xl">I'm <span class="text-fuchsia-700">Ajonye Paul</span></h1>
-					<p class="text-lg font-medium mt-2 lg:text-xl lg:mt-6">
-						A Senior full stack web and mobile app developer with over 5 years of experience.
-					</p>
+					<!-- Desktop Menu -->
+					<div class="hidden md:flex items-center space-x-8">
+						<a href="#home" class="text-gray-300 hover:text-white transition-colors duration-300">Home</a>
+						<a href="#about" class="text-gray-300 hover:text-white transition-colors duration-300">About</a>
+						<a href="#services" class="text-gray-300 hover:text-white transition-colors duration-300">Services</a>
+						<a href="#projects" class="text-gray-300 hover:text-white transition-colors duration-300">Projects</a>
+						<a href="#skills" class="text-gray-300 hover:text-white transition-colors duration-300">Skills</a>
+						<a href="#contact" class="text-gray-300 hover:text-white transition-colors duration-300">Contact</a>
+					</div>
 
-					<ul class="flex items-center lg:justify-center space-x-6 lg:space-x-10 text-2xl lg:text-4xl mt-4 lg:mt-8">
-						<li>
-							<a href="https://github.com/PaulChase"><span class="fab fa-github text-white"></span></a>
-						</li>
-						<li>
-							<a href="https://www.linkedin.com/in/ajonye-paul-53158a194/"
-								><span class="fab fa-linkedin text-white"></span
-							></a>
-						</li>
-						<li>
-							<a href="https://twitter.com/AjonyePaul/"><span class="fab fa-twitter text-white"></span></a>
-						</li>
-						<li>
-							<a href="https://medium.com/@ajonyepaul"><span class="fab fa-medium text-white"></span></a>
-						</li>
-					</ul>
-
-					<div class="flex items-center space-x-6 lg:justify-center">
-						<!-- <a href="#contact" class="inline-block text-white border-2 border-fuchsia-700 p-1 rounded-md mt-6">
-							<button
-								class="bg-fuchsia-800 px-10 py-3 -mb-4 -mr-4 rounded-md text-sm font-medium lg:text-base lg:px-14 lg:py-4"
-							>
-								Contact me
-							</button>
-						</a> -->
+					<!-- CTA Button -->
+					<div class="hidden md:block">
 						<a
-							href="/assets/AJONYE PAUL MAIN RESUME.pdf"
-							class="inline-block text-fuchsia-700 border-2 border-white p-1 rounded-md mt-6"
-							target="_blank"
+							href="#contact"
+							class="neon-button relative inline-block px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg text-white font-medium hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300"
 						>
-							<button
-								class="bg-white px-10 py-3 -mb-4 -mr-4 rounded-md text-sm font-medium lg:text-base lg:px-14 lg:py-4"
-							>
-								Download CV
-							</button>
+							Let's Talk
 						</a>
 					</div>
+
+					<!-- Mobile menu button -->
+					<button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-gray-300 hover:text-white">
+						<i class="fas" :class="mobileMenuOpen ? 'fa-times' : 'fa-bars'" class="text-2xl"></i>
+					</button>
 				</div>
 			</div>
-		</section>
 
-		<!-- My Services -->
-		<section class="py-14 lg:py-20">
-			<h2 class="text-2xl font-semibold lg:text-center lg:text-4xl w-fit lg:mx-auto relative pb-5">
-				My Services
-				<span class="w-20 h-2 bg-fuchsia-600 inline-block rounded-md absolute bottom-0 left-0"></span>
-			</h2>
-
-			<div class="grid lg:grid-cols-3 gap-8 lg:gap-x-10 mt-8 lg:mt-14 max-w-7xl mx-auto">
-				<div class="bg-zinc-800 p-6 rounded-md">
-					<img src="/assets/fontend.png" alt="" class="h-32" />
-					<h4 class="font-semibold mt-2 text-xl uppercase lg:mt-8">Frontend Development</h4>
-					<p class="mt-4 font-medium leading-7 text-gray-300 opacity-70 lg:mt-10">
-						Experience in crafting captivating user interfaces to drive engagement and enhance user experience,
-						delivering visually compelling solutions.
-					</p>
-				</div>
-				<div class="bg-zinc-800 p-6 rounded-md">
-					<img src="/assets/backend.png" alt="" class="h-32" />
-					<h4 class="font-semibold mt-2 text-xl uppercase lg:mt-8">Backend Development</h4>
-					<p class="mt-4 font-medium leading-7 text-gray-300 opacity-70 lg:mt-10">
-						Proficient in developing robust backend systems to ensure smooth operations, data integrity, and
-						high-performance functionalities, essential for a seamless user experience.
-					</p>
-				</div>
-				<div class="bg-zinc-800 p-6 rounded-md">
-					<img src="/assets/moile-app.png" alt="" class="h-32" />
-					<h4 class="font-semibold mt-2 text-xl uppercase lg:mt-8">Mobile app Development</h4>
-					<p class="mt-4 font-medium leading-7 text-gray-300 opacity-70 lg:mt-10">
-						Skilled in creating high-performance cross-platfrom mobile applications, ensuring user satisfaction and
-						business growth through intuitive and functional mobile solutions.
-					</p>
+			<!-- Mobile Menu -->
+			<div
+				x-show="mobileMenuOpen"
+				x-cloak
+				x-transition:enter="transition ease-out duration-200"
+				x-transition:enter-start="opacity-0 transform -translate-y-2"
+				x-transition:enter-end="opacity-100 transform translate-y-0"
+				class="md:hidden glass border-t border-white/10"
+			>
+				<div class="px-4 pt-2 pb-4 space-y-2">
+					<a
+						href="#home"
+						@click="mobileMenuOpen = false"
+						class="block px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all"
+						>Home</a
+					>
+					<a
+						href="#about"
+						@click="mobileMenuOpen = false"
+						class="block px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all"
+						>About</a
+					>
+					<a
+						href="#services"
+						@click="mobileMenuOpen = false"
+						class="block px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all"
+						>Services</a
+					>
+					<a
+						href="#projects"
+						@click="mobileMenuOpen = false"
+						class="block px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all"
+						>Projects</a
+					>
+					<a
+						href="#skills"
+						@click="mobileMenuOpen = false"
+						class="block px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all"
+						>Skills</a
+					>
+					<a
+						href="#contact"
+						@click="mobileMenuOpen = false"
+						class="block px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all"
+						>Contact</a
+					>
 				</div>
 			</div>
-		</section>
+		</nav>
 
-		<!-- tech stack -->
-		<section class="py-14 lg:py-20">
-			<h2 class="text-2xl font-semibold lg:text-center lg:text-4xl w-fit lg:mx-auto relative pb-5">
-				Tech Stack
-				<span class="w-20 h-2 bg-fuchsia-600 inline-block rounded-md absolute bottom-0 left-0"></span>
-			</h2>
-
-			<div class="grid grid-cols-2 gap-6 mt-8 max-w-6xl mx-auto lg:grid-cols-4 lg:gap-10 lg:mt-14">
-				<div class="bg-zinc-800 p-4 lg:p-6 rounded-md">
-					<img src="/assets/html-5.png" alt="" class="h-16 lg:h-20 mx-auto" />
-					<h4 class="font-medium text-center mt-2">HTML</h4>
-				</div>
-				<div class="bg-zinc-800 p-4 lg:p-6 rounded-md">
-					<img src="/assets/css.png" alt="" class="h-16 lg:h-20 mx-auto" />
-					<h4 class="font-medium text-center mt-2">CSS</h4>
-				</div>
-				<div class="bg-zinc-800 p-4 lg:p-6 rounded-md">
-					<img src="/assets/js.png" alt="" class="h-16 lg:h-20 mx-auto" />
-					<h4 class="font-medium text-center mt-2">Javascript</h4>
-				</div>
-				<div class="bg-zinc-800 p-4 lg:p-6 rounded-md">
-					<img src="/assets/tailwindcss.svg" alt="" class="h-16 lg:h-20 mx-auto" />
-					<h4 class="font-medium text-center mt-2">Tailwind CSS</h4>
-				</div>
-				<div class="bg-zinc-800 p-4 lg:p-6 rounded-md">
-					<img src="/assets/typescript.png" alt="" class="h-16 lg:h-20 mx-auto" />
-					<h4 class="font-medium text-center mt-2">Typescript</h4>
-				</div>
-				<div class="bg-zinc-800 p-4 lg:p-6 rounded-md">
-					<img src="/assets/python.png" alt="" class="h-16 lg:h-20 mx-auto" />
-					<h4 class="font-medium text-center mt-2">Python</h4>
-				</div>
-				<div class="bg-zinc-800 p-4 lg:p-6 rounded-md">
-					<img src="/assets/nodejs.png" alt="" class="h-16 lg:h-20 mx-auto" />
-					<h4 class="font-medium text-center mt-2">Node Js</h4>
-				</div>
-				<div class="bg-zinc-800 p-4 lg:p-6 rounded-md">
-					<img src="/assets/science.png" alt="" class="h-16 lg:h-20 mx-auto" />
-					<h4 class="font-medium text-center mt-2">Reatjs/React Native</h4>
-				</div>
-				<div class="bg-zinc-800 p-4 lg:p-6 rounded-md">
-					<img src="/assets/php.png" alt="" class="h-16 lg:h-20 mx-auto" />
-					<h4 class="font-medium text-center mt-2">PHP</h4>
-				</div>
-				<div class="bg-zinc-800 p-4 lg:p-6 rounded-md">
-					<img src="/assets/laravel.png" alt="" class="h-16 lg:h-20 mx-auto" />
-					<h4 class="font-medium text-center mt-2">Laravel</h4>
-				</div>
-				<div class="bg-zinc-800 p-4 lg:p-6 rounded-md">
-					<img src="/assets/mysql.png" alt="" class="h-16 lg:h-20 mx-auto" />
-					<h4 class="font-medium text-center mt-2">Database</h4>
-				</div>
-				<div class="bg-zinc-800 p-4 lg:p-6 rounded-md">
-					<img src="/assets/cloud-storage.png" alt="" class="h-16 lg:h-20 mx-auto" />
-					<h4 class="font-medium text-center mt-2">Cloud Computing</h4>
-				</div>
-				<div class="bg-zinc-800 p-4 lg:p-6 rounded-md">
-					<img src="/assets/git.png" alt="" class="h-16 lg:h-20 mx-auto" />
-					<h4 class="font-medium text-center mt-2">Version control</h4>
-				</div>
-			</div>
-		</section>
-
-		<!-- projects -->
-		<section
-			class="py-14"
-			x-data="projects"
-			x-init="$watch('filter', value => projects = value != '' ? inMemoryProjects.filter(project => project.category.includes(value)) : inMemoryProjects) "
-		>
-			<h2 class="text-2xl font-semibold lg:text-center lg:text-4xl w-fit lg:mx-auto relative pb-5">
-				Projects
-				<span class="w-20 h-2 bg-fuchsia-600 inline-block rounded-md absolute bottom-0 left-0"></span>
-			</h2>
-
-			<div>
-				<ul class="flex justify-center items-center mt-8 lg:mt-14 whitespace-nowrap overflow-x-auto">
-					<li class="">
-						<button
-							class="px-4 py-2 rounded-md text-xs lg:text-sm"
-							:class="filter === '' ? 'bg-fuchsia-700' : 'bg-zinc-900' "
-							x-on:click="filter = ''"
+		<!-- Hero Section -->
+		<section id="home" class="relative min-h-screen flex items-center justify-center px-4 pt-20 z-10">
+			<div class="max-w-7xl mx-auto w-full">
+				<div class="text-center space-y-6 fade-in" x-intersect="$el.classList.add('visible')">
+					<!-- Floating Avatar/Logo -->
+					<div class="float mb-8">
+						<div
+							class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-cyan-500 via-purple-600 to-pink-500 p-1 glow-border"
 						>
-							All
-						</button>
-					</li>
-					<li class="">
-						<button
-							class="px-4 py-2 rounded-md text-xs lg:text-sm"
-							:class="filter === 'Personal' ? 'bg-fuchsia-700' : 'bg-zinc-900' "
-							x-on:click="filter = 'Personal'"
-						>
-							Personal
-						</button>
-					</li>
-
-					<li class="">
-						<button
-							class="px-4 py-2 rounded-md text-xs lg:text-sm"
-							:class="filter === 'website' ? 'bg-fuchsia-700' : 'bg-zinc-900' "
-							x-on:click="filter = 'website'"
-						>
-							Website
-						</button>
-					</li>
-					<li class="">
-						<button
-							class="px-4 py-2 rounded-md text-xs lg:text-sm"
-							:class="filter === 'app' ? 'bg-fuchsia-700' : 'bg-zinc-900' "
-							x-on:click="filter = 'app'"
-						>
-							Mobile App
-						</button>
-					</li>
-				</ul>
-			</div>
-
-			<div class="grid gap-6 mt-8 max-w-7xl mx-auto lg:grid-cols-3 lg:gap-10 lg:mt-14">
-				<template x-for="(project, index) in projects" :key="index">
-					<div class="bg-zinc-800 rounded-md">
-						<img :src="project.img" alt="" srcset="" class="h-52 lg:h-64 object-cover w-full rounded-t-md" />
-						<div class="p-3">
-							<div class="flex justify-between items-center">
-								<h3 x-text="project.title" class="text-lg md:text-xl lg:text-2xl font-semibold"></h3>
-								<span
-									x-show="project.category.includes('Personal')"
-									x-cloak
-									class="text-xs lg:text-sm font-medium text-gray-300"
-									>#Personal</span
-								>
-								<span
-									x-show="project.category.includes('Company')"
-									x-cloak
-									class="text-xs lg:text-sm font-medium text-gray-300"
-									>#Company</span
-								>
-							</div>
-							<p x-text="project.desc" class="text-gray-300 opacity-70 mt-3 text-sm md:text-base"></p>
-
-							<ul class="flex flex-wrap items-center mt-3 gap-2">
-								<template x-for="(language, index) in project.stack" :key="index">
-									<li
-										x-text="language"
-										class="bg-gray-900 px-2 py-1 rounded-md text-xs lg:text-sm whitespace-nowrap"
-									></li>
-								</template>
-							</ul>
-
-							<div class="grid grid-cols-2 gap-x-4 mt-4">
-								<a
-									x-show="project.url"
-									:href="project.url"
-									x-cloak
-									target="_blank"
-									class="bg-zinc-900 px-4 py-3 rounded-md block text-center text-xs lg:text-sm"
-								>
-									<span class="fa fa-eye mr-2"></span>
-									Preview
-								</a>
-								<a
-									x-show="project.code"
-									:href="project.code"
-									x-cloak
-									target="_blank"
-									class="bg-zinc-900 px-4 py-3 rounded-md block text-center text-xs lg:text-sm"
-								>
-									<span class="fa fa-code mr-2"></span>
-									Code
-								</a>
+							<div class="w-full h-full rounded-full bg-black/80 flex items-center justify-center">
+								<span class="text-5xl gradient-text font-bold">AP</span>
 							</div>
 						</div>
 					</div>
-				</template>
+
+					<!-- Greeting -->
+					<div class="text-cyan-400 text-lg md:text-xl font-medium">
+						<span class="inline-block">👋</span> Hello, I'm
+					</div>
+
+					<!-- Name with Gradient -->
+					<h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black">
+						<span class="gradient-text glow">Ajonye Paul</span>
+					</h1>
+
+					<!-- Typing Role -->
+					<div class="text-2xl sm:text-3xl md:text-4xl text-gray-300 font-medium">
+						<span x-text="typedText" class="typing"></span>
+					</div>
+
+					<!-- Description -->
+					<p class="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+						Crafting innovative digital experiences through full-stack development. Specializing in
+						<span class="text-purple-400 font-semibold">React</span>,
+						<span class="text-purple-400 font-semibold">Laravel</span>, and
+						<span class="text-purple-400 font-semibold">React Native</span> with 5+ years of expertise.
+					</p>
+
+					<!-- Social Links -->
+					<div class="flex items-center justify-center space-x-6 pt-4">
+						<a
+							href="https://github.com/PaulChase"
+							target="_blank"
+							class="w-12 h-12 flex items-center justify-center rounded-full glass glass-hover"
+						>
+							<i class="fab fa-github text-xl"></i>
+						</a>
+						<a
+							href="https://www.linkedin.com/in/ajonye-paul-53158a194/"
+							target="_blank"
+							class="w-12 h-12 flex items-center justify-center rounded-full glass glass-hover"
+						>
+							<i class="fab fa-linkedin text-xl"></i>
+						</a>
+						<a
+							href="https://twitter.com/AjonyePaul/"
+							target="_blank"
+							class="w-12 h-12 flex items-center justify-center rounded-full glass glass-hover"
+						>
+							<i class="fab fa-twitter text-xl"></i>
+						</a>
+						<a
+							href="https://medium.com/@ajonyepaul"
+							target="_blank"
+							class="w-12 h-12 flex items-center justify-center rounded-full glass glass-hover"
+						>
+							<i class="fab fa-medium text-xl"></i>
+						</a>
+					</div>
+
+					<!-- CTA Buttons -->
+					<div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
+						<a
+							href="#contact"
+							class="neon-button relative inline-block px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg text-white font-semibold text-lg hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 transform hover:scale-105"
+						>
+							<i class="fas fa-paper-plane mr-2"></i>
+							Get In Touch
+						</a>
+						<a
+							href="/assets/AJONYE PAUL MAIN RESUME.pdf"
+							target="_blank"
+							class="relative inline-block px-8 py-4 glass border-2 border-purple-500/50 rounded-lg text-white font-semibold text-lg hover:border-purple-500 hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 transform hover:scale-105"
+						>
+							<i class="fas fa-download mr-2"></i>
+							Download CV
+						</a>
+					</div>
+				</div>
+
+				<!-- Scroll Indicator -->
+				<div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+					<a href="#about" class="text-gray-400 hover:text-white transition-colors">
+						<i class="fas fa-chevron-down text-2xl"></i>
+					</a>
+				</div>
 			</div>
 		</section>
 
-		<!-- contact me -->
-		<!-- <section class="py-14 lg:p-24" x-data="contact" id="contact">
-			<h2 class="text-2xl font-semibold lg:text-center lg:text-4xl w-fit lg:mx-auto relative pb-5">
-				Contact Me
-				<span class="w-20 h-2 bg-fuchsia-600 inline-block rounded-md absolute bottom-0 left-0"></span>
-			</h2>
-
-			<form
-				action=""
-				class="max-w-4xl mx-auto mt-8 lg:mt-14 bg-zinc-800 p-4 md:p-8 lg:p-10 rounded-md"
-				x-on:submit.prevent="handleSubmit"
-			>
-				<div class="grid grid-cols-2 gap-x-4 mt-4 mb-10">
-					<a
-						href="https://wa.me/2347040214836"
-						target="_blank"
-						class="bg-zinc-900 px-4 py-3 rounded-md block text-center text-sm lg:text-base"
-					>
-						<span class="fab fa-whatsapp mr-2"></span>
-						Whatsapp DM
-					</a>
-					<a
-						href="tel:+2347040214836"
-						target="_blank"
-						class="bg-zinc-900 px-4 py-3 rounded-md block text-center text-xs lg:text-sm"
-					>
-						<span class="fa fa-phone mr-2"></span>
-						Call Me
-					</a>
-				</div>
-
-				<hr class="border-gray-500" />
-
-				<p class="text-xs text-center text-gray-300 font-medium lg:text-sm mb-6 mt-2">Or send me a message</p>
-
-				<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-					<div>
-						<label for="name" class="block text-sm font-medium text-gray-300">Name</label>
-						<input
-							type="text"
-							name="name"
-							id="name"
-							x-model="name"
-							class="mt-1 focus:ring-fuchsia-600 focus:border-fuchsia-600 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md bg-zinc-900 text-gray-300 p-3"
-							required
-						/>
+		<!-- About Section -->
+		<section id="about" class="relative py-20 px-4 z-10">
+			<div class="max-w-6xl mx-auto">
+				<div class="fade-in" x-intersect="$el.classList.add('visible')">
+					<!-- Section Title -->
+					<div class="text-center mb-16">
+						<h2 class="text-4xl md:text-5xl font-bold gradient-text inline-block">About Me</h2>
+						<div class="w-24 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 mx-auto mt-4 rounded-full"></div>
 					</div>
-					<div>
-						<label for="email" class="block text-sm font-medium text-gray-300">Email</label>
-						<input
-							type="email"
-							name="email"
-							id="email"
-							x-model="email"
-							class="mt-1 focus:ring-fuchsia-600 focus:border-fuchsia-600 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md bg-zinc-900 text-gray-300 p-3"
-							required
-						/>
+
+					<div class="grid md:grid-cols-2 gap-12 items-center">
+						<!-- Left: Image/Stats -->
+						<div class="space-y-6">
+							<div class="glass glass-hover rounded-2xl p-8">
+								<div class="grid grid-cols-2 gap-6">
+									<div class="text-center">
+										<div class="text-4xl font-bold gradient-text">5+</div>
+										<div class="text-gray-400 mt-2">Years Experience</div>
+									</div>
+									<div class="text-center">
+										<div class="text-4xl font-bold gradient-text">50+</div>
+										<div class="text-gray-400 mt-2">Projects Done</div>
+									</div>
+									<div class="text-center">
+										<div class="text-4xl font-bold gradient-text">10+</div>
+										<div class="text-gray-400 mt-2">Technologies</div>
+									</div>
+									<div class="text-center">
+										<div class="text-4xl font-bold gradient-text">100%</div>
+										<div class="text-gray-400 mt-2">Client Satisfaction</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Right: Description -->
+						<div class="space-y-6">
+							<p class="text-gray-300 text-lg leading-relaxed">
+								I'm a passionate <span class="text-purple-400 font-semibold">Full Stack Developer</span> with a deep
+								love for creating elegant solutions to complex problems. My journey in software development has equipped
+								me with expertise across the entire development stack.
+							</p>
+							<p class="text-gray-300 text-lg leading-relaxed">
+								From crafting beautiful, responsive user interfaces to architecting robust backend systems and building
+								native mobile experiences, I bring ideas to life with clean, efficient code.
+							</p>
+							<p class="text-gray-300 text-lg leading-relaxed">
+								I thrive on staying at the cutting edge of technology, constantly learning and adapting to deliver
+								solutions that not only meet but exceed expectations. Let's build something amazing together!
+							</p>
+
+							<!-- Skills Highlight -->
+							<div class="flex flex-wrap gap-3 pt-4">
+								<span class="px-4 py-2 glass rounded-full text-sm">🚀 Fast Learner</span>
+								<span class="px-4 py-2 glass rounded-full text-sm">💡 Problem Solver</span>
+								<span class="px-4 py-2 glass rounded-full text-sm">🎨 UI/UX Enthusiast</span>
+								<span class="px-4 py-2 glass rounded-full text-sm">⚡ Performance Optimizer</span>
+							</div>
+						</div>
 					</div>
 				</div>
+			</div>
+		</section>
 
-				<div class="mt-6">
-					<label for="message" class="block text-sm font-medium text-gray-300">Message</label>
-					<textarea
-						name="message"
-						id="message"
-						rows="4"
-						x-model="message"
-						required
-						class="mt-1 focus:ring-fuchsia-600 focus:border-fuchsia-600 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md bg-zinc-900 text-gray-300 p-3"
-					></textarea>
+		<!-- Services Section -->
+		<section id="services" class="relative py-20 px-4 z-10">
+			<div class="max-w-7xl mx-auto">
+				<div class="fade-in" x-intersect="$el.classList.add('visible')">
+					<!-- Section Title -->
+					<div class="text-center mb-16">
+						<h2 class="text-4xl md:text-5xl font-bold gradient-text inline-block">My Services</h2>
+						<div class="w-24 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 mx-auto mt-4 rounded-full"></div>
+					</div>
+
+					<div class="grid md:grid-cols-3 gap-8">
+						<!-- Service 1 -->
+						<div class="glass glass-hover rounded-2xl p-8 card-3d group">
+							<div
+								class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+							>
+								<i class="fas fa-laptop-code text-2xl"></i>
+							</div>
+							<h3 class="text-2xl font-bold mb-4 group-hover:text-cyan-400 transition-colors">Frontend Development</h3>
+							<p class="text-gray-400 leading-relaxed">
+								Crafting captivating, responsive user interfaces with modern frameworks like React, Next.js, and
+								Tailwind CSS. Pixel-perfect designs that drive engagement and deliver exceptional user experiences.
+							</p>
+							<div class="mt-6 flex flex-wrap gap-2">
+								<span class="text-xs px-3 py-1 bg-cyan-500/20 rounded-full text-cyan-400">React</span>
+								<span class="text-xs px-3 py-1 bg-cyan-500/20 rounded-full text-cyan-400">Next.js</span>
+								<span class="text-xs px-3 py-1 bg-cyan-500/20 rounded-full text-cyan-400">Tailwind</span>
+							</div>
+						</div>
+
+						<!-- Service 2 -->
+						<div class="glass glass-hover rounded-2xl p-8 card-3d group">
+							<div
+								class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+							>
+								<i class="fas fa-server text-2xl"></i>
+							</div>
+							<h3 class="text-2xl font-bold mb-4 group-hover:text-purple-400 transition-colors">Backend Development</h3>
+							<p class="text-gray-400 leading-relaxed">
+								Building robust, scalable server-side applications with Laravel, Node.js, and modern databases. Ensuring
+								data integrity, security, and high-performance APIs that power seamless experiences.
+							</p>
+							<div class="mt-6 flex flex-wrap gap-2">
+								<span class="text-xs px-3 py-1 bg-purple-500/20 rounded-full text-purple-400">Laravel</span>
+								<span class="text-xs px-3 py-1 bg-purple-500/20 rounded-full text-purple-400">Node.js</span>
+								<span class="text-xs px-3 py-1 bg-purple-500/20 rounded-full text-purple-400">MySQL</span>
+							</div>
+						</div>
+
+						<!-- Service 3 -->
+						<div class="glass glass-hover rounded-2xl p-8 card-3d group">
+							<div
+								class="w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+							>
+								<i class="fas fa-mobile-alt text-2xl"></i>
+							</div>
+							<h3 class="text-2xl font-bold mb-4 group-hover:text-pink-400 transition-colors">
+								Mobile App Development
+							</h3>
+							<p class="text-gray-400 leading-relaxed">
+								Creating high-performance cross-platform mobile applications with React Native. Delivering native-like
+								experiences that engage users and drive business growth on iOS and Android.
+							</p>
+							<div class="mt-6 flex flex-wrap gap-2">
+								<span class="text-xs px-3 py-1 bg-pink-500/20 rounded-full text-pink-400">React Native</span>
+								<span class="text-xs px-3 py-1 bg-pink-500/20 rounded-full text-pink-400">iOS</span>
+								<span class="text-xs px-3 py-1 bg-pink-500/20 rounded-full text-pink-400">Android</span>
+							</div>
+						</div>
+					</div>
 				</div>
+			</div>
+		</section>
 
-				<div class="mt-6 flex justify-end items-center px-4">
-					<button href="" class="inline-block text-white border-2 border-fuchsia-700 p-1 rounded-md mt-6">
-						<span
-							class="inline-block bg-fuchsia-800 px-10 py-3 -mb-4 -mr-4 rounded-md text-sm font-medium lg:text-base lg:px-14 lg:py-4"
+		<!-- Skills Section -->
+		<section id="skills" class="relative py-20 px-4 z-10">
+			<div class="max-w-7xl mx-auto">
+				<div class="fade-in" x-intersect="$el.classList.add('visible')">
+					<!-- Section Title -->
+					<div class="text-center mb-16">
+						<h2 class="text-4xl md:text-5xl font-bold gradient-text inline-block">Tech Stack</h2>
+						<div class="w-24 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 mx-auto mt-4 rounded-full"></div>
+					</div>
+
+					<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+						<!-- Skill items with animation -->
+						<div
+							class="glass glass-hover rounded-xl p-6 text-center group"
+							x-data="{ hovered: false }"
+							@mouseenter="hovered = true"
+							@mouseleave="hovered = false"
 						>
-							Send Message
-						</span>
-					</button>
-				</div>
-			</form>
-		</section> -->
+							<div
+								class="w-16 h-16 mx-auto mb-4 transition-transform duration-300"
+								:class="hovered ? 'scale-110 rotate-6' : ''"
+							>
+								<img src="/assets/html-5.png" alt="HTML" class="w-full h-full object-contain" />
+							</div>
+							<h4 class="font-medium text-sm group-hover:text-cyan-400 transition-colors">HTML5</h4>
+						</div>
 
+						<div
+							class="glass glass-hover rounded-xl p-6 text-center group"
+							x-data="{ hovered: false }"
+							@mouseenter="hovered = true"
+							@mouseleave="hovered = false"
+						>
+							<div
+								class="w-16 h-16 mx-auto mb-4 transition-transform duration-300"
+								:class="hovered ? 'scale-110 rotate-6' : ''"
+							>
+								<img src="/assets/css.png" alt="CSS" class="w-full h-full object-contain" />
+							</div>
+							<h4 class="font-medium text-sm group-hover:text-cyan-400 transition-colors">CSS3</h4>
+						</div>
+
+						<div
+							class="glass glass-hover rounded-xl p-6 text-center group"
+							x-data="{ hovered: false }"
+							@mouseenter="hovered = true"
+							@mouseleave="hovered = false"
+						>
+							<div
+								class="w-16 h-16 mx-auto mb-4 transition-transform duration-300"
+								:class="hovered ? 'scale-110 rotate-6' : ''"
+							>
+								<img src="/assets/js.png" alt="JavaScript" class="w-full h-full object-contain" />
+							</div>
+							<h4 class="font-medium text-sm group-hover:text-purple-400 transition-colors">JavaScript</h4>
+						</div>
+
+						<div
+							class="glass glass-hover rounded-xl p-6 text-center group"
+							x-data="{ hovered: false }"
+							@mouseenter="hovered = true"
+							@mouseleave="hovered = false"
+						>
+							<div
+								class="w-16 h-16 mx-auto mb-4 transition-transform duration-300"
+								:class="hovered ? 'scale-110 rotate-6' : ''"
+							>
+								<img src="/assets/typescript.png" alt="TypeScript" class="w-full h-full object-contain" />
+							</div>
+							<h4 class="font-medium text-sm group-hover:text-blue-400 transition-colors">TypeScript</h4>
+						</div>
+
+						<div
+							class="glass glass-hover rounded-xl p-6 text-center group"
+							x-data="{ hovered: false }"
+							@mouseenter="hovered = true"
+							@mouseleave="hovered = false"
+						>
+							<div
+								class="w-16 h-16 mx-auto mb-4 transition-transform duration-300"
+								:class="hovered ? 'scale-110 rotate-6' : ''"
+							>
+								<img src="/assets/science.png" alt="React" class="w-full h-full object-contain" />
+							</div>
+							<h4 class="font-medium text-sm group-hover:text-cyan-400 transition-colors">React</h4>
+						</div>
+
+						<div
+							class="glass glass-hover rounded-xl p-6 text-center group"
+							x-data="{ hovered: false }"
+							@mouseenter="hovered = true"
+							@mouseleave="hovered = false"
+						>
+							<div
+								class="w-16 h-16 mx-auto mb-4 transition-transform duration-300"
+								:class="hovered ? 'scale-110 rotate-6' : ''"
+							>
+								<img src="/assets/tailwindcss.svg" alt="Tailwind" class="w-full h-full object-contain" />
+							</div>
+							<h4 class="font-medium text-sm group-hover:text-cyan-400 transition-colors">Tailwind CSS</h4>
+						</div>
+
+						<div
+							class="glass glass-hover rounded-xl p-6 text-center group"
+							x-data="{ hovered: false }"
+							@mouseenter="hovered = true"
+							@mouseleave="hovered = false"
+						>
+							<div
+								class="w-16 h-16 mx-auto mb-4 transition-transform duration-300"
+								:class="hovered ? 'scale-110 rotate-6' : ''"
+							>
+								<img src="/assets/nodejs.png" alt="Node.js" class="w-full h-full object-contain" />
+							</div>
+							<h4 class="font-medium text-sm group-hover:text-green-400 transition-colors">Node.js</h4>
+						</div>
+
+						<div
+							class="glass glass-hover rounded-xl p-6 text-center group"
+							x-data="{ hovered: false }"
+							@mouseenter="hovered = true"
+							@mouseleave="hovered = false"
+						>
+							<div
+								class="w-16 h-16 mx-auto mb-4 transition-transform duration-300"
+								:class="hovered ? 'scale-110 rotate-6' : ''"
+							>
+								<img src="/assets/python.png" alt="Python" class="w-full h-full object-contain" />
+							</div>
+							<h4 class="font-medium text-sm group-hover:text-yellow-400 transition-colors">Python</h4>
+						</div>
+
+						<div
+							class="glass glass-hover rounded-xl p-6 text-center group"
+							x-data="{ hovered: false }"
+							@mouseenter="hovered = true"
+							@mouseleave="hovered = false"
+						>
+							<div
+								class="w-16 h-16 mx-auto mb-4 transition-transform duration-300"
+								:class="hovered ? 'scale-110 rotate-6' : ''"
+							>
+								<img src="/assets/php.png" alt="PHP" class="w-full h-full object-contain" />
+							</div>
+							<h4 class="font-medium text-sm group-hover:text-purple-400 transition-colors">PHP</h4>
+						</div>
+
+						<div
+							class="glass glass-hover rounded-xl p-6 text-center group"
+							x-data="{ hovered: false }"
+							@mouseenter="hovered = true"
+							@mouseleave="hovered = false"
+						>
+							<div
+								class="w-16 h-16 mx-auto mb-4 transition-transform duration-300"
+								:class="hovered ? 'scale-110 rotate-6' : ''"
+							>
+								<img src="/assets/laravel.png" alt="Laravel" class="w-full h-full object-contain" />
+							</div>
+							<h4 class="font-medium text-sm group-hover:text-red-400 transition-colors">Laravel</h4>
+						</div>
+
+						<div
+							class="glass glass-hover rounded-xl p-6 text-center group"
+							x-data="{ hovered: false }"
+							@mouseenter="hovered = true"
+							@mouseleave="hovered = false"
+						>
+							<div
+								class="w-16 h-16 mx-auto mb-4 transition-transform duration-300"
+								:class="hovered ? 'scale-110 rotate-6' : ''"
+							>
+								<img src="/assets/mysql.png" alt="MySQL" class="w-full h-full object-contain" />
+							</div>
+							<h4 class="font-medium text-sm group-hover:text-blue-400 transition-colors">MySQL</h4>
+						</div>
+
+						<div
+							class="glass glass-hover rounded-xl p-6 text-center group"
+							x-data="{ hovered: false }"
+							@mouseenter="hovered = true"
+							@mouseleave="hovered = false"
+						>
+							<div
+								class="w-16 h-16 mx-auto mb-4 transition-transform duration-300"
+								:class="hovered ? 'scale-110 rotate-6' : ''"
+							>
+								<img src="/assets/git.png" alt="Git" class="w-full h-full object-contain" />
+							</div>
+							<h4 class="font-medium text-sm group-hover:text-orange-400 transition-colors">Git</h4>
+						</div>
+
+						<div
+							class="glass glass-hover rounded-xl p-6 text-center group"
+							x-data="{ hovered: false }"
+							@mouseenter="hovered = true"
+							@mouseleave="hovered = false"
+						>
+							<div
+								class="w-16 h-16 mx-auto mb-4 transition-transform duration-300"
+								:class="hovered ? 'scale-110 rotate-6' : ''"
+							>
+								<img src="/assets/cloud-storage.png" alt="Cloud" class="w-full h-full object-contain" />
+							</div>
+							<h4 class="font-medium text-sm group-hover:text-sky-400 transition-colors">Cloud (AWS)</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Projects Section -->
+		<section
+			id="projects"
+			class="relative py-20 px-4 z-10"
+			x-data="projects"
+			x-init="$watch('filter', value => projects = value != '' ? inMemoryProjects.filter(project => project.category.includes(value)) : inMemoryProjects)"
+		>
+			<div class="max-w-7xl mx-auto">
+				<div class="fade-in" x-intersect="$el.classList.add('visible')">
+					<!-- Section Title -->
+					<div class="text-center mb-16">
+						<h2 class="text-4xl md:text-5xl font-bold gradient-text inline-block">Featured Projects</h2>
+						<div class="w-24 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 mx-auto mt-4 rounded-full"></div>
+						<p class="text-gray-400 mt-6 max-w-2xl mx-auto">
+							A showcase of my recent work across web and mobile platforms
+						</p>
+					</div>
+
+					<!-- Filter Buttons -->
+					<div class="flex flex-wrap justify-center gap-4 mb-12">
+						<button
+							class="px-6 py-3 rounded-lg font-medium transition-all duration-300"
+							:class="filter === '' ? 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-lg shadow-purple-500/50' : 'glass text-gray-300 hover:text-white'"
+							@click="filter = ''"
+						>
+							All Projects
+						</button>
+						<button
+							class="px-6 py-3 rounded-lg font-medium transition-all duration-300"
+							:class="filter === 'website' ? 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-lg shadow-purple-500/50' : 'glass text-gray-300 hover:text-white'"
+							@click="filter = 'website'"
+						>
+							<i class="fas fa-globe mr-2"></i>Web Apps
+						</button>
+						<button
+							class="px-6 py-3 rounded-lg font-medium transition-all duration-300"
+							:class="filter === 'app' ? 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-lg shadow-purple-500/50' : 'glass text-gray-300 hover:text-white'"
+							@click="filter = 'app'"
+						>
+							<i class="fas fa-mobile-alt mr-2"></i>Mobile Apps
+						</button>
+						<button
+							class="px-6 py-3 rounded-lg font-medium transition-all duration-300"
+							:class="filter === 'Personal' ? 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-lg shadow-purple-500/50' : 'glass text-gray-300 hover:text-white'"
+							@click="filter = 'Personal'"
+						>
+							<i class="fas fa-user mr-2"></i>Personal
+						</button>
+					</div>
+
+					<!-- Projects Grid -->
+					<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+						<template x-for="(project, index) in projects" :key="index">
+							<div
+								class="glass rounded-2xl overflow-hidden group hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300"
+								x-data="{ imageLoaded: false }"
+							>
+								<!-- Project Image -->
+								<div class="relative overflow-hidden h-48 bg-gradient-to-br from-cyan-500/10 to-purple-600/10">
+									<img
+										:src="project.img"
+										:alt="project.title"
+										@load="imageLoaded = true"
+										class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+										:class="imageLoaded ? 'opacity-100' : 'opacity-0'"
+									/>
+									<div
+										class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+									></div>
+
+									<!-- Category Badge -->
+									<div class="absolute top-4 right-4">
+										<span
+											x-show="project.category.includes('Personal')"
+											x-cloak
+											class="px-3 py-1 bg-cyan-500/90 backdrop-blur-sm rounded-full text-xs font-medium"
+										>
+											Personal
+										</span>
+										<span
+											x-show="project.category.includes('Company')"
+											x-cloak
+											class="px-3 py-1 bg-purple-500/90 backdrop-blur-sm rounded-full text-xs font-medium"
+										>
+											Company
+										</span>
+									</div>
+								</div>
+
+								<!-- Project Info -->
+								<div class="p-6">
+									<h3
+										x-text="project.title"
+										class="text-xl font-bold mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-purple-500 group-hover:bg-clip-text transition-all"
+									></h3>
+									<p x-text="project.desc" class="text-gray-400 text-sm leading-relaxed mb-4 line-clamp-3"></p>
+
+									<!-- Tech Stack Tags -->
+									<div class="flex flex-wrap gap-2 mb-4">
+										<template x-for="(tech, idx) in project.stack.slice(0, 4)" :key="idx">
+											<span
+												x-text="tech"
+												class="px-3 py-1 text-xs bg-white/5 rounded-full text-gray-300 border border-white/10"
+											></span>
+										</template>
+										<span
+											x-show="project.stack.length > 4"
+											x-text="'+' + (project.stack.length - 4)"
+											class="px-3 py-1 text-xs bg-white/5 rounded-full text-gray-300 border border-white/10"
+										></span>
+									</div>
+
+									<!-- Action Buttons -->
+									<div class="flex gap-3">
+										<a
+											x-show="project.url"
+											:href="project.url"
+											x-cloak
+											target="_blank"
+											class="flex-1 px-4 py-2 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg text-center text-sm font-medium hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 transform hover:scale-105"
+										>
+											<i class="fas fa-external-link-alt mr-2"></i>View
+										</a>
+										<a
+											x-show="project.code"
+											:href="project.code"
+											x-cloak
+											target="_blank"
+											class="flex-1 px-4 py-2 glass border border-white/20 rounded-lg text-center text-sm font-medium hover:border-purple-500/50 transition-all duration-300"
+										>
+											<i class="fas fa-code mr-2"></i>Code
+										</a>
+									</div>
+								</div>
+							</div>
+						</template>
+					</div>
+
+					<!-- No Projects Message -->
+					<div x-show="projects.length === 0" x-cloak class="text-center py-16">
+						<i class="fas fa-folder-open text-6xl text-gray-600 mb-4"></i>
+						<p class="text-gray-400 text-lg">No projects found in this category</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Contact Section with AI-like Interface -->
+		<section id="contact" class="relative py-20 px-4 z-10">
+			<div class="max-w-5xl mx-auto">
+				<div class="fade-in" x-intersect="$el.classList.add('visible')">
+					<!-- Section Title -->
+					<div class="text-center mb-16">
+						<h2 class="text-4xl md:text-5xl font-bold gradient-text inline-block">Let's Connect</h2>
+						<div class="w-24 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 mx-auto mt-4 rounded-full"></div>
+						<p class="text-gray-400 mt-6 max-w-2xl mx-auto">
+							Have a project in mind? Let's create something amazing together
+						</p>
+					</div>
+
+					<div class="grid md:grid-cols-2 gap-8">
+						<!-- Contact Info -->
+						<div class="space-y-6">
+							<div class="glass glass-hover rounded-2xl p-6">
+								<div class="flex items-start space-x-4">
+									<div
+										class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center flex-shrink-0"
+									>
+										<i class="fas fa-envelope text-xl"></i>
+									</div>
+									<div>
+										<h4 class="font-semibold text-lg mb-2">Email</h4>
+										<p class="text-gray-400">codewithchase@gmail.com</p>
+									</div>
+								</div>
+							</div>
+
+							<div class="glass glass-hover rounded-2xl p-6">
+								<div class="flex items-start space-x-4">
+									<div
+										class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center flex-shrink-0"
+									>
+										<i class="fab fa-whatsapp text-xl"></i>
+									</div>
+									<div>
+										<h4 class="font-semibold text-lg mb-2">WhatsApp</h4>
+										<a
+											href="https://wa.me/2347040214836"
+											target="_blank"
+											class="text-gray-400 hover:text-green-400 transition-colors"
+										>
+											+234 704 021 4836
+										</a>
+									</div>
+								</div>
+							</div>
+
+							<!-- <div class="glass glass-hover rounded-2xl p-6">
+								<div class="flex items-start space-x-4">
+									<div
+										class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center flex-shrink-0"
+									>
+										<i class="fas fa-phone text-xl"></i>
+									</div>
+									<div>
+										<h4 class="font-semibold text-lg mb-2">Phone</h4>
+										<a href="tel:+2347040214836" class="text-gray-400 hover:text-purple-400 transition-colors">
+											+234 704 021 4836
+										</a>
+									</div>
+								</div>
+							</div> -->
+
+							<!-- Social Links -->
+							<div class="glass rounded-2xl p-6">
+								<h4 class="font-semibold text-lg mb-4">Connect on Social</h4>
+								<div class="flex space-x-4">
+									<a
+										href="https://github.com/PaulChase"
+										target="_blank"
+										class="w-10 h-10 flex items-center justify-center glass glass-hover rounded-lg"
+									>
+										<i class="fab fa-github"></i>
+									</a>
+									<a
+										href="https://www.linkedin.com/in/ajonye-paul-53158a194/"
+										target="_blank"
+										class="w-10 h-10 flex items-center justify-center glass glass-hover rounded-lg"
+									>
+										<i class="fab fa-linkedin"></i>
+									</a>
+									<a
+										href="https://twitter.com/AjonyePaul/"
+										target="_blank"
+										class="w-10 h-10 flex items-center justify-center glass glass-hover rounded-lg"
+									>
+										<i class="fab fa-twitter"></i>
+									</a>
+									<a
+										href="https://medium.com/@ajonyepaul"
+										target="_blank"
+										class="w-10 h-10 flex items-center justify-center glass glass-hover rounded-lg"
+									>
+										<i class="fab fa-medium"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<!-- Contact Form -->
+						<div class="glass rounded-2xl p-8" x-data="contact">
+							<form @submit.prevent="handleSubmit" class="space-y-6">
+								<div>
+									<label for="name" class="block text-sm font-medium mb-2 text-gray-300">Your Name</label>
+									<input
+										type="text"
+										id="name"
+										x-model="name"
+										required
+										class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-purple-500 transition-colors text-white placeholder-gray-500"
+										placeholder="John Doe"
+									/>
+								</div>
+
+								<div>
+									<label for="email" class="block text-sm font-medium mb-2 text-gray-300">Your Email</label>
+									<input
+										type="email"
+										id="email"
+										x-model="email"
+										required
+										class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-purple-500 transition-colors text-white placeholder-gray-500"
+										placeholder="john@example.com"
+									/>
+								</div>
+
+								<div>
+									<label for="message" class="block text-sm font-medium mb-2 text-gray-300">Your Message</label>
+									<textarea
+										id="message"
+										x-model="message"
+										required
+										rows="4"
+										class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-purple-500 transition-colors text-white placeholder-gray-500 resize-none"
+										placeholder="Tell me about your project..."
+									></textarea>
+								</div>
+
+								<button
+									type="submit"
+									class="neon-button w-full px-6 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg text-white font-semibold hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 transform hover:scale-105"
+								>
+									<i class="fas fa-paper-plane mr-2"></i>
+									Send Message
+								</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<footer class="relative py-12 px-4 border-t border-white/10 z-10">
+			<div class="max-w-7xl mx-auto">
+				<div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+					<div class="text-center md:text-left">
+						<h3 class="text-2xl font-bold gradient-text mb-2">&lt;AP /&gt;</h3>
+						<p class="text-gray-400 text-sm">Building the future, one line of code at a time</p>
+					</div>
+
+					<div class="text-center md:text-right">
+						<p class="text-gray-400 text-sm">&copy; 2025 Ajonye Paul. All rights reserved.</p>
+						<p class="text-gray-500 text-xs mt-1">
+							Designed with <i class="fas fa-heart text-red-500"></i> and
+							<span class="text-purple-400">Tailwind CSS</span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<!-- Alpine.js Scripts -->
 		<script>
 			document.addEventListener("alpine:init", () => {
+				Alpine.plugin(window.AlpineIntersect);
+			});
+			document.addEventListener("alpine:init", () => {
+				// Main app data
+				Alpine.data("app", () => ({
+					isHovering: false,
+					typedText: "",
+					roles: [
+						"Full Stack Developer",
+						"React Specialist",
+						"Laravel Expert",
+						"Mobile App Developer",
+						"Problem Solver",
+					],
+					currentRoleIndex: 0,
+					currentCharIndex: 0,
+					isDeleting: false,
+
+					init() {
+						// Initialize particles
+						this.createParticles();
+
+						// Initialize cursor
+						this.initCursor();
+
+						// Initialize typing effect
+						this.typeRole();
+
+						// Initialize scroll animations
+						this.initScrollAnimations();
+					},
+
+					createParticles() {
+						const particlesContainer = document.getElementById("particles");
+						const particleCount = 50;
+
+						for (let i = 0; i < particleCount; i++) {
+							const particle = document.createElement("div");
+							particle.className = "particle";
+
+							const size = Math.random() * 4 + 2;
+							particle.style.width = `${size}px`;
+							particle.style.height = `${size}px`;
+							particle.style.left = `${Math.random() * 100}%`;
+							particle.style.top = `${Math.random() * 100}%`;
+							particle.style.animationDuration = `${Math.random() * 10 + 10}s`;
+							particle.style.animationDelay = `${Math.random() * 5}s`;
+							particle.style.opacity = Math.random() * 0.5 + 0.1;
+
+							particlesContainer.appendChild(particle);
+						}
+					},
+
+					initCursor() {
+						if (window.innerWidth <= 768) return; // Skip on mobile
+
+						const cursorDot = this.$refs.cursorDot;
+						const cursorOutline = this.$refs.cursorOutline;
+
+						document.addEventListener("mousemove", (e) => {
+							const x = e.clientX;
+							const y = e.clientY;
+
+							cursorDot.style.left = `${x}px`;
+							cursorDot.style.top = `${y}px`;
+
+							cursorOutline.style.left = `${x}px`;
+							cursorOutline.style.top = `${y}px`;
+						});
+
+						// Add hover effect for interactive elements
+						const interactiveElements = document.querySelectorAll("a, button, input, textarea");
+						interactiveElements.forEach((el) => {
+							el.addEventListener("mouseenter", () => {
+								this.isHovering = true;
+							});
+							el.addEventListener("mouseleave", () => {
+								this.isHovering = false;
+							});
+						});
+					},
+
+					typeRole() {
+						const currentRole = this.roles[this.currentRoleIndex];
+
+						if (this.isDeleting) {
+							this.typedText = currentRole.substring(0, this.currentCharIndex - 1);
+							this.currentCharIndex--;
+
+							if (this.currentCharIndex === 0) {
+								this.isDeleting = false;
+								this.currentRoleIndex = (this.currentRoleIndex + 1) % this.roles.length;
+								setTimeout(() => this.typeRole(), 500);
+								return;
+							}
+						} else {
+							this.typedText = currentRole.substring(0, this.currentCharIndex + 1);
+							this.currentCharIndex++;
+
+							if (this.currentCharIndex === currentRole.length) {
+								setTimeout(() => {
+									this.isDeleting = true;
+									this.typeRole();
+								}, 2000);
+								return;
+							}
+						}
+
+						const typeSpeed = this.isDeleting ? 50 : 100;
+						setTimeout(() => this.typeRole(), typeSpeed);
+					},
+
+					initScrollAnimations() {
+						// Smooth scroll for anchor links
+						document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+							anchor.addEventListener("click", function (e) {
+								e.preventDefault();
+								const target = document.querySelector(this.getAttribute("href"));
+								if (target) {
+									target.scrollIntoView({
+										behavior: "smooth",
+										block: "start",
+									});
+								}
+							});
+						});
+					},
+				}));
+
+				// Projects data
 				Alpine.data("projects", () => ({
 					filter: "",
 					projects: myProjects,
 					inMemoryProjects: myProjects,
 				}));
 
+				// Contact form
 				Alpine.data("contact", () => ({
 					name: "",
 					email: "",
 					message: "",
 					handleSubmit() {
-						window.location = `https://wa.me/2347040214836?text="Hello Paul, \n name: ${this.name} \n email: ${this.email} \n message: ${this.message}"`;
+						const whatsappMessage = `Hello Paul,%0A%0AName: ${this.name}%0AEmail: ${this.email}%0A%0AMessage: ${this.message}`;
+						window.open(`https://wa.me/2347040214836?text=${whatsappMessage}`, "_blank");
+
+						// Reset form
+						this.name = "";
+						this.email = "";
+						this.message = "";
 					},
 				}));
 			});
