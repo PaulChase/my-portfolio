@@ -3,7 +3,17 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Ajonye Paul - Full Stack Developer</title>
+		<title>Ajonye Paul - Founder, Ajobaba Technologies</title>
+		<meta
+			name="description"
+			content="Ajonye Paul is a full stack engineer and founder of Ajobaba Technologies, a CAC-registered technology company delivering web, mobile, cloud and custom software solutions for businesses."
+		/>
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="Ajonye Paul - Founder, Ajobaba Technologies" />
+		<meta
+			property="og:description"
+			content="Web, mobile, cloud and custom software solutions for growing businesses."
+		/>
 
 		<link rel="stylesheet" href="/dist/output.css" />
 
@@ -63,46 +73,6 @@
 
 			::-webkit-scrollbar-thumb:hover {
 				background: linear-gradient(180deg, #8b5cf6, #ec4899);
-			}
-
-			/* Custom Cursor */
-			body {
-				cursor: none;
-			}
-
-			a,
-			button {
-				cursor: none;
-			}
-
-			.cursor-dot {
-				width: 8px;
-				height: 8px;
-				background: linear-gradient(135deg, #06b6d4, #8b5cf6);
-				border-radius: 50%;
-				position: fixed;
-				pointer-events: none;
-				z-index: 9999;
-				transition: transform 0.15s ease;
-				mix-blend-mode: difference;
-			}
-
-			.cursor-outline {
-				width: 40px;
-				height: 40px;
-				border: 2px solid rgba(139, 92, 246, 0.5);
-				border-radius: 50%;
-				position: fixed;
-				pointer-events: none;
-				z-index: 9998;
-				transition: all 0.15s ease;
-				mix-blend-mode: difference;
-			}
-
-			.cursor-outline.hover {
-				width: 60px;
-				height: 60px;
-				border-color: rgba(236, 72, 153, 0.8);
 			}
 
 			/* Animated Background */
@@ -216,31 +186,6 @@
 				transform: translateY(0);
 			}
 
-			/* 3D Card Effect */
-			.card-3d {
-				transform-style: preserve-3d;
-				transition: transform 0.3s ease;
-			}
-
-			.card-3d:hover {
-				transform: rotateY(5deg) rotateX(5deg);
-			}
-
-			/* Floating Animation */
-			.float {
-				animation: floating 6s ease-in-out infinite;
-			}
-
-			@keyframes floating {
-				0%,
-				100% {
-					transform: translateY(0px);
-				}
-				50% {
-					transform: translateY(-20px);
-				}
-			}
-
 			/* Typing Effect */
 			.typing {
 				border-right: 2px solid #8b5cf6;
@@ -277,27 +222,11 @@
 			.neon-button:hover::before {
 				left: 100%;
 			}
-
-			/* Mobile Responsive Cursor */
-			@media (max-width: 768px) {
-				body {
-					cursor: auto;
-				}
-
-				.cursor-dot,
-				.cursor-outline {
-					display: none;
-				}
-			}
 		</style>
 
 		<script src="./index.js"></script>
 	</head>
 	<body class="animated-bg text-gray-50 overflow-x-hidden" x-data="app" x-init="init()">
-		<!-- Custom Cursor -->
-		<div class="cursor-dot" x-ref="cursorDot"></div>
-		<div class="cursor-outline" x-ref="cursorOutline" :class="{ 'hover': isHovering }"></div>
-
 		<!-- Particle Background -->
 		<div id="particles"></div>
 
@@ -306,33 +235,43 @@
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div class="flex justify-between items-center h-20">
 					<!-- Logo -->
-					<div class="flex-shrink-0">
-						<h1 class="font-bold text-2xl gradient-text">&lt;AP /&gt;</h1>
-					</div>
+					<a href="#home" class="flex items-center gap-3 flex-shrink-0">
+						<span
+							class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500 to-purple-600 flex items-center justify-center font-bold text-white"
+							>AP</span
+						>
+						<span class="leading-tight">
+							<span class="block font-semibold text-white">Ajonye Paul</span>
+							<span class="block text-xs text-gray-400">Founder, Ajobaba Technologies</span>
+						</span>
+					</a>
 
 					<!-- Desktop Menu -->
-					<div class="hidden md:flex items-center space-x-8">
-						<a href="#home" class="text-gray-300 hover:text-white transition-colors duration-300">Home</a>
+					<div class="hidden lg:flex items-center space-x-8">
 						<a href="#about" class="text-gray-300 hover:text-white transition-colors duration-300">About</a>
+						<a href="#company" class="text-gray-300 hover:text-white transition-colors duration-300">Company</a>
 						<a href="#services" class="text-gray-300 hover:text-white transition-colors duration-300">Services</a>
 						<a href="#projects" class="text-gray-300 hover:text-white transition-colors duration-300">Projects</a>
-						<a href="#skills" class="text-gray-300 hover:text-white transition-colors duration-300">Skills</a>
 						<a href="#contact" class="text-gray-300 hover:text-white transition-colors duration-300">Contact</a>
 					</div>
 
 					<!-- CTA Button -->
-					<div class="hidden md:block">
+					<div class="hidden lg:block">
 						<a
 							href="#contact"
 							class="neon-button relative inline-block px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg text-white font-medium hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300"
 						>
-							Let's Talk
+							Get a Quote
 						</a>
 					</div>
 
 					<!-- Mobile menu button -->
-					<button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-gray-300 hover:text-white">
-						<i class="fas" :class="mobileMenuOpen ? 'fa-times' : 'fa-bars'" class="text-2xl"></i>
+					<button
+						@click="mobileMenuOpen = !mobileMenuOpen"
+						class="lg:hidden text-gray-300 hover:text-white"
+						aria-label="Toggle menu"
+					>
+						<i class="fas text-2xl" :class="mobileMenuOpen ? 'fa-times' : 'fa-bars'"></i>
 					</button>
 				</div>
 			</div>
@@ -344,20 +283,20 @@
 				x-transition:enter="transition ease-out duration-200"
 				x-transition:enter-start="opacity-0 transform -translate-y-2"
 				x-transition:enter-end="opacity-100 transform translate-y-0"
-				class="md:hidden glass border-t border-white/10"
+				class="lg:hidden glass border-t border-white/10"
 			>
 				<div class="px-4 pt-2 pb-4 space-y-2">
-					<a
-						href="#home"
-						@click="mobileMenuOpen = false"
-						class="block px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all"
-						>Home</a
-					>
 					<a
 						href="#about"
 						@click="mobileMenuOpen = false"
 						class="block px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all"
 						>About</a
+					>
+					<a
+						href="#company"
+						@click="mobileMenuOpen = false"
+						class="block px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all"
+						>Company</a
 					>
 					<a
 						href="#services"
@@ -375,7 +314,7 @@
 						href="#skills"
 						@click="mobileMenuOpen = false"
 						class="block px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all"
-						>Skills</a
+						>Tech Stack</a
 					>
 					<a
 						href="#contact"
@@ -388,24 +327,17 @@
 		</nav>
 
 		<!-- Hero Section -->
-		<section id="home" class="relative min-h-screen flex items-center justify-center px-4 pt-20 z-10">
+		<section id="home" class="relative min-h-screen flex items-center justify-center px-4 pt-28 pb-24 z-10">
 			<div class="max-w-7xl mx-auto w-full">
 				<div class="text-center space-y-6 fade-in" x-intersect="$el.classList.add('visible')">
-					<!-- Floating Avatar/Logo -->
-					<div class="float mb-8">
-						<div
-							class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-cyan-500 via-purple-600 to-pink-500 p-1 glow-border"
-						>
-							<div class="w-full h-full rounded-full bg-black/80 flex items-center justify-center">
-								<span class="text-5xl gradient-text font-bold">AP</span>
-							</div>
-						</div>
-					</div>
-
-					<!-- Greeting -->
-					<div class="text-cyan-400 text-lg md:text-xl font-medium">
-						<span class="inline-block">👋</span> Hello, I'm
-					</div>
+					<!-- Company Badge -->
+					<a
+						href="#company"
+						class="inline-flex items-center gap-2 px-4 py-2 glass rounded-full text-sm text-gray-300 hover:text-white transition-colors"
+					>
+						<span class="w-2 h-2 rounded-full bg-emerald-400 flex-shrink-0"></span>
+						<span>Founder &amp; Lead Engineer, <span class="font-semibold text-white">Ajobaba Technologies</span></span>
+					</a>
 
 					<!-- Name with Gradient -->
 					<h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black">
@@ -419,17 +351,37 @@
 
 					<!-- Description -->
 					<p class="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-						Crafting innovative digital experiences through full-stack development. Specializing in
-						<span class="text-purple-400 font-semibold">React</span>,
-						<span class="text-purple-400 font-semibold">Laravel</span>, and
-						<span class="text-purple-400 font-semibold">React Native</span> with 5+ years of expertise.
+						I lead <span class="text-white font-semibold">Ajobaba Technologies</span>, a registered technology company
+						helping businesses, schools and startups launch reliable web platforms, mobile apps and cloud systems,
+						backed by 5+ years of hands-on engineering with <span class="text-purple-400 font-semibold">React</span>,
+						<span class="text-purple-400 font-semibold">Laravel</span> and
+						<span class="text-purple-400 font-semibold">React Native</span>.
 					</p>
 
+					<!-- CTA Buttons -->
+					<div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+						<a
+							href="#contact"
+							class="neon-button relative inline-block px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg text-white font-semibold text-lg hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 transform hover:scale-105"
+						>
+							<i class="fas fa-paper-plane mr-2"></i>
+							Start a Project
+						</a>
+						<a
+							href="#services"
+							class="relative inline-block px-8 py-4 glass border-2 border-purple-500/50 rounded-lg text-white font-semibold text-lg hover:border-purple-500 hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 transform hover:scale-105"
+						>
+							<i class="fas fa-briefcase mr-2"></i>
+							Our Services
+						</a>
+					</div>
+
 					<!-- Social Links -->
-					<div class="flex items-center justify-center space-x-6 pt-4">
+					<div class="flex flex-wrap items-center justify-center gap-4 pt-4">
 						<a
 							href="https://github.com/PaulChase"
 							target="_blank"
+							aria-label="GitHub"
 							class="w-12 h-12 flex items-center justify-center rounded-full glass glass-hover"
 						>
 							<i class="fab fa-github text-xl"></i>
@@ -437,6 +389,7 @@
 						<a
 							href="https://www.linkedin.com/in/paul-ajonye-1b9b7b3b6"
 							target="_blank"
+							aria-label="LinkedIn"
 							class="w-12 h-12 flex items-center justify-center rounded-full glass glass-hover"
 						>
 							<i class="fab fa-linkedin text-xl"></i>
@@ -444,6 +397,7 @@
 						<a
 							href="https://twitter.com/AjonyePaul/"
 							target="_blank"
+							aria-label="Twitter"
 							class="w-12 h-12 flex items-center justify-center rounded-full glass glass-hover"
 						>
 							<i class="fab fa-twitter text-xl"></i>
@@ -451,35 +405,32 @@
 						<a
 							href="https://medium.com/@ajonyepaul"
 							target="_blank"
+							aria-label="Medium"
 							class="w-12 h-12 flex items-center justify-center rounded-full glass glass-hover"
 						>
 							<i class="fab fa-medium text-xl"></i>
 						</a>
-					</div>
-
-					<!-- CTA Buttons -->
-					<div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
 						<a
-							href="#contact"
-							class="neon-button relative inline-block px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg text-white font-semibold text-lg hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 transform hover:scale-105"
-						>
-							<i class="fas fa-paper-plane mr-2"></i>
-							Get In Touch
-						</a>
-						<a
-							href="/assets/AJONYE PAUL CV.pdf"
+							href="/assets/AJONYE-PAUL-CV-new.pdf"
 							target="_blank"
-							class="relative inline-block px-8 py-4 glass border-2 border-purple-500/50 rounded-lg text-white font-semibold text-lg hover:border-purple-500 hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 transform hover:scale-105"
+							class="h-12 px-5 flex items-center justify-center rounded-full glass glass-hover text-sm font-medium"
 						>
 							<i class="fas fa-download mr-2"></i>
 							Download CV
 						</a>
 					</div>
+
+					<!-- Trust Strip -->
+					<div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 pt-8 text-sm text-gray-400">
+						<span><i class="fas fa-certificate text-cyan-400 mr-2"></i>CAC Registered &middot; BN 9243491</span>
+						<span><i class="fas fa-location-dot text-purple-400 mr-2"></i>Makurdi, Benue State, Nigeria</span>
+						<span><i class="fas fa-circle-check text-pink-400 mr-2"></i>50+ projects delivered</span>
+					</div>
 				</div>
 
 				<!-- Scroll Indicator -->
-				<div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-					<a href="#about" class="text-gray-400 hover:text-white transition-colors">
+				<div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+					<a href="#about" class="text-gray-400 hover:text-white transition-colors" aria-label="Scroll down">
 						<i class="fas fa-chevron-down text-2xl"></i>
 					</a>
 				</div>
@@ -492,58 +443,233 @@
 				<div class="fade-in" x-intersect="$el.classList.add('visible')">
 					<!-- Section Title -->
 					<div class="text-center mb-16">
+						<p class="text-sm uppercase tracking-widest text-cyan-400 font-semibold mb-3">Meet the Founder</p>
 						<h2 class="text-4xl md:text-5xl font-bold gradient-text inline-block">About Me</h2>
 						<div class="w-24 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 mx-auto mt-4 rounded-full"></div>
 					</div>
 
-					<div class="grid md:grid-cols-2 gap-12 items-center">
-						<!-- Left: Image/Stats -->
-						<div class="space-y-6">
-							<div class="glass glass-hover rounded-2xl p-8">
-								<div class="grid grid-cols-2 gap-6">
-									<div class="text-center">
-										<div class="text-4xl font-bold gradient-text">5+</div>
-										<div class="text-gray-400 mt-2">Years Experience</div>
-									</div>
-									<div class="text-center">
-										<div class="text-4xl font-bold gradient-text">50+</div>
-										<div class="text-gray-400 mt-2">Projects Done</div>
-									</div>
-									<div class="text-center">
-										<div class="text-4xl font-bold gradient-text">10+</div>
-										<div class="text-gray-400 mt-2">Technologies</div>
-									</div>
-									<div class="text-center">
-										<div class="text-4xl font-bold gradient-text">100%</div>
-										<div class="text-gray-400 mt-2">Client Satisfaction</div>
-									</div>
+					<div class="grid md:grid-cols-5 gap-12 items-center">
+						<!-- Left: Photo -->
+						<div class="md:col-span-2">
+							<div class="relative max-w-sm mx-auto">
+								<div
+									class="absolute -inset-1 bg-gradient-to-br from-cyan-500 via-purple-600 to-pink-500 rounded-2xl opacity-60 blur"
+								></div>
+								<img
+									src="/assets/me.jpg"
+									alt="Ajonye Paul, Founder of Ajobaba Technologies"
+									class="relative w-full aspect-[4/5] object-cover rounded-2xl"
+								/>
+								<div
+									class="absolute bottom-4 left-4 right-4 rounded-xl px-4 py-3 bg-black/60 backdrop-blur-md border border-white/10"
+								>
+									<div class="font-semibold">Ajonye Paul</div>
+									<div class="text-sm text-gray-300">Founder &amp; Lead Engineer, Ajobaba Technologies</div>
 								</div>
 							</div>
 						</div>
 
 						<!-- Right: Description -->
-						<div class="space-y-6">
+						<div class="md:col-span-3 space-y-6">
 							<p class="text-gray-300 text-lg leading-relaxed">
-								I'm a passionate <span class="text-purple-400 font-semibold">Full Stack Developer</span> with a deep
-								love for creating elegant solutions to complex problems. My journey in software development has equipped
-								me with expertise across the entire development stack.
+								I'm a <span class="text-purple-400 font-semibold">Full Stack Software Engineer</span> and the founder of
+								<span class="text-white font-semibold">Ajobaba Technologies</span>. For over five years I've designed,
+								built and shipped products used by students, companies and everyday consumers, from SaaS platforms for
+								HR teams to mobile apps on the Google Play Store.
 							</p>
 							<p class="text-gray-300 text-lg leading-relaxed">
-								From crafting beautiful, responsive user interfaces to architecting robust backend systems and building
-								native mobile experiences, I bring ideas to life with clean, efficient code.
+								I started Ajobaba Technologies to give businesses a dependable technology partner: one team that
+								understands both the code and the commercial goals behind it. I oversee every project from the first
+								consultation through to launch and ongoing support.
 							</p>
 							<p class="text-gray-300 text-lg leading-relaxed">
-								I thrive on staying at the cutting edge of technology, constantly learning and adapting to deliver
-								solutions that not only meet but exceed expectations. Let's build something amazing together!
+								My approach is simple: understand the problem, build the right solution, and stay accountable for the
+								results.
 							</p>
 
-							<!-- Skills Highlight -->
-							<div class="flex flex-wrap gap-3 pt-4">
-								<span class="px-4 py-2 glass rounded-full text-sm">🚀 Fast Learner</span>
-								<span class="px-4 py-2 glass rounded-full text-sm">💡 Problem Solver</span>
-								<span class="px-4 py-2 glass rounded-full text-sm">🎨 UI/UX Enthusiast</span>
-								<span class="px-4 py-2 glass rounded-full text-sm">⚡ Performance Optimizer</span>
+							<!-- Stats -->
+							<div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-2">
+								<div class="glass rounded-xl p-4 text-center">
+									<div class="text-3xl font-bold gradient-text">5+</div>
+									<div class="text-gray-400 text-sm mt-1">Years Experience</div>
+								</div>
+								<div class="glass rounded-xl p-4 text-center">
+									<div class="text-3xl font-bold gradient-text">50+</div>
+									<div class="text-gray-400 text-sm mt-1">Projects Delivered</div>
+								</div>
+								<div class="glass rounded-xl p-4 text-center">
+									<div class="text-3xl font-bold gradient-text">10+</div>
+									<div class="text-gray-400 text-sm mt-1">Technologies</div>
+								</div>
+								<div class="glass rounded-xl p-4 text-center">
+									<div class="text-3xl font-bold gradient-text">100%</div>
+									<div class="text-gray-400 text-sm mt-1">Client Satisfaction</div>
+								</div>
 							</div>
+
+							<!-- Expertise Highlight -->
+							<div class="flex flex-wrap gap-3 pt-2">
+								<span class="px-4 py-2 glass rounded-full text-sm"
+									><i class="fas fa-chess-knight text-cyan-400 mr-2"></i>Product Strategy</span
+								>
+								<span class="px-4 py-2 glass rounded-full text-sm"
+									><i class="fas fa-code text-purple-400 mr-2"></i>Full Stack Engineering</span
+								>
+								<span class="px-4 py-2 glass rounded-full text-sm"
+									><i class="fas fa-mobile-screen-button text-pink-400 mr-2"></i>Mobile Development</span
+								>
+								<span class="px-4 py-2 glass rounded-full text-sm"
+									><i class="fas fa-cloud text-sky-400 mr-2"></i>Cloud Infrastructure</span
+								>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Company Section -->
+		<section id="company" class="relative py-20 px-4 z-10">
+			<div class="max-w-7xl mx-auto">
+				<div class="fade-in" x-intersect="$el.classList.add('visible')">
+					<!-- Section Title -->
+					<div class="text-center mb-16">
+						<p class="text-sm uppercase tracking-widest text-cyan-400 font-semibold mb-3">My Company</p>
+						<h2 class="text-4xl md:text-5xl font-bold gradient-text inline-block">Ajobaba Technologies</h2>
+						<div class="w-24 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 mx-auto mt-4 rounded-full"></div>
+						<p class="text-gray-400 mt-6 max-w-2xl mx-auto">
+							A Nigerian technology company that designs, builds and supports digital products for businesses that want
+							to grow.
+						</p>
+					</div>
+
+					<div class="grid lg:grid-cols-3 gap-8">
+						<!-- Overview -->
+						<div class="lg:col-span-2 glass rounded-2xl p-8 md:p-10">
+							<div class="flex items-center gap-4 mb-6">
+								<div
+									class="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-500 to-purple-600 flex items-center justify-center text-xl font-bold flex-shrink-0"
+								>
+									AT
+								</div>
+								<div>
+									<h3 class="text-2xl font-bold">Ajobaba Technologies</h3>
+									<p class="text-sm text-gray-400">Web &middot; Mobile &middot; Cloud &middot; Consulting</p>
+								</div>
+							</div>
+							<p class="text-gray-300 text-lg leading-relaxed mb-4">
+								Ajobaba Technologies was founded in 2026 to help organisations turn ideas into dependable software. We
+								work with startups, small and medium-sized businesses, schools and institutions to plan, build and run
+								the technology they rely on every day.
+							</p>
+							<p class="text-gray-300 text-lg leading-relaxed">
+								We pair proven engineering with a practical, business-first mindset: clear communication, honest
+								timelines and solutions built to scale as our clients grow.
+							</p>
+
+							<!-- Mission & Vision -->
+							<div class="grid sm:grid-cols-2 gap-6 mt-8">
+								<div class="rounded-xl bg-white/5 border border-white/10 p-6">
+									<div class="flex items-center gap-3 mb-3">
+										<i class="fas fa-bullseye text-cyan-400"></i>
+										<h4 class="font-semibold text-lg">Our Mission</h4>
+									</div>
+									<p class="text-gray-400 leading-relaxed">
+										To give growing businesses access to world-class technology that helps them work smarter, serve
+										customers better and grow faster.
+									</p>
+								</div>
+								<div class="rounded-xl bg-white/5 border border-white/10 p-6">
+									<div class="flex items-center gap-3 mb-3">
+										<i class="fas fa-eye text-purple-400"></i>
+										<h4 class="font-semibold text-lg">Our Vision</h4>
+									</div>
+									<p class="text-gray-400 leading-relaxed">
+										To become one of Africa's most trusted technology partners, known for quality, integrity and lasting
+										client relationships.
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<!-- Company Profile -->
+						<div class="glass rounded-2xl p-8 flex flex-col">
+							<h3 class="text-xl font-bold mb-6">Company Profile</h3>
+							<dl class="space-y-5">
+								<div class="flex items-start gap-4">
+									<i class="fas fa-building text-cyan-400 mt-1 w-5 text-center"></i>
+									<div>
+										<dt class="text-xs uppercase tracking-wider text-gray-500">Registered Name</dt>
+										<dd class="text-gray-200 font-medium">Ajobaba Technologies</dd>
+									</div>
+								</div>
+								<div class="flex items-start gap-4">
+									<i class="fas fa-id-card text-purple-400 mt-1 w-5 text-center"></i>
+									<div>
+										<dt class="text-xs uppercase tracking-wider text-gray-500">Business Name Reg. No.</dt>
+										<dd class="text-gray-200 font-medium">9243491</dd>
+									</div>
+								</div>
+								<div class="flex items-start gap-4">
+									<i class="fas fa-calendar-check text-pink-400 mt-1 w-5 text-center"></i>
+									<div>
+										<dt class="text-xs uppercase tracking-wider text-gray-500">Registered</dt>
+										<dd class="text-gray-200 font-medium">28 January 2026</dd>
+									</div>
+								</div>
+								<div class="flex items-start gap-4">
+									<i class="fas fa-location-dot text-sky-400 mt-1 w-5 text-center"></i>
+									<div>
+										<dt class="text-xs uppercase tracking-wider text-gray-500">Head Office</dt>
+										<dd class="text-gray-200 font-medium">Makurdi, Benue State, Nigeria</dd>
+									</div>
+								</div>
+								<div class="flex items-start gap-4">
+									<i class="fas fa-user-tie text-emerald-400 mt-1 w-5 text-center"></i>
+									<div>
+										<dt class="text-xs uppercase tracking-wider text-gray-500">Founder</dt>
+										<dd class="text-gray-200 font-medium">Ajonye Paul</dd>
+									</div>
+								</div>
+							</dl>
+							<div
+								class="mt-8 lg:mt-auto flex items-center gap-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 px-4 py-3 text-sm text-emerald-300"
+							>
+								<i class="fas fa-shield-halved"></i>
+								Registered with the Corporate Affairs Commission (CAC), Nigeria
+							</div>
+						</div>
+					</div>
+
+					<!-- Why Choose Us -->
+					<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+						<div class="glass glass-hover rounded-2xl p-6">
+							<i class="fas fa-gem text-2xl text-cyan-400 mb-4"></i>
+							<h4 class="text-lg font-semibold mb-2">Quality Engineering</h4>
+							<p class="text-gray-400 text-sm leading-relaxed">
+								Clean, maintainable code built on proven, modern technologies.
+							</p>
+						</div>
+						<div class="glass glass-hover rounded-2xl p-6">
+							<i class="fas fa-comments text-2xl text-purple-400 mb-4"></i>
+							<h4 class="text-lg font-semibold mb-2">Clear Communication</h4>
+							<p class="text-gray-400 text-sm leading-relaxed">
+								Regular updates and a single point of contact from start to finish.
+							</p>
+						</div>
+						<div class="glass glass-hover rounded-2xl p-6">
+							<i class="fas fa-clock text-2xl text-pink-400 mb-4"></i>
+							<h4 class="text-lg font-semibold mb-2">On-Time Delivery</h4>
+							<p class="text-gray-400 text-sm leading-relaxed">
+								Realistic timelines and agreed milestones, so there are no surprises.
+							</p>
+						</div>
+						<div class="glass glass-hover rounded-2xl p-6">
+							<i class="fas fa-headset text-2xl text-emerald-400 mb-4"></i>
+							<h4 class="text-lg font-semibold mb-2">Ongoing Support</h4>
+							<p class="text-gray-400 text-sm leading-relaxed">
+								Maintenance, updates and support long after your product launches.
+							</p>
 						</div>
 					</div>
 				</div>
@@ -556,67 +682,211 @@
 				<div class="fade-in" x-intersect="$el.classList.add('visible')">
 					<!-- Section Title -->
 					<div class="text-center mb-16">
-						<h2 class="text-4xl md:text-5xl font-bold gradient-text inline-block">My Services</h2>
+						<p class="text-sm uppercase tracking-widest text-cyan-400 font-semibold mb-3">What We Offer</p>
+						<h2 class="text-4xl md:text-5xl font-bold gradient-text inline-block">Our Services</h2>
 						<div class="w-24 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 mx-auto mt-4 rounded-full"></div>
+						<p class="text-gray-400 mt-6 max-w-2xl mx-auto">
+							End-to-end technology services from Ajobaba Technologies, from the first idea to launch and beyond.
+						</p>
 					</div>
 
-					<div class="grid md:grid-cols-3 gap-8">
+					<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 						<!-- Service 1 -->
-						<div class="glass glass-hover rounded-2xl p-8 card-3d group">
+						<div class="glass glass-hover rounded-2xl p-8 group flex flex-col">
 							<div
-								class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+								class="w-14 h-14 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
 							>
-								<i class="fas fa-laptop-code text-2xl"></i>
+								<i class="fas fa-laptop-code text-xl"></i>
 							</div>
-							<h3 class="text-2xl font-bold mb-4 group-hover:text-cyan-400 transition-colors">Frontend Development</h3>
+							<h3 class="text-xl font-bold mb-3 group-hover:text-cyan-400 transition-colors">
+								Website &amp; Web App Development
+							</h3>
 							<p class="text-gray-400 leading-relaxed">
-								Crafting captivating, responsive user interfaces with modern frameworks like React, Next.js, and
-								Tailwind CSS. Pixel-perfect designs that drive engagement and deliver exceptional user experiences.
+								Fast, secure and responsive websites and web applications that represent your brand and turn visitors
+								into customers.
 							</p>
-							<div class="mt-6 flex flex-wrap gap-2">
-								<span class="text-xs px-3 py-1 bg-cyan-500/20 rounded-full text-cyan-400">React</span>
-								<span class="text-xs px-3 py-1 bg-cyan-500/20 rounded-full text-cyan-400">Next.js</span>
-								<span class="text-xs px-3 py-1 bg-cyan-500/20 rounded-full text-cyan-400">Tailwind</span>
-							</div>
+							<ul class="mt-5 space-y-2 text-sm text-gray-300">
+								<li><i class="fas fa-check text-cyan-400 mr-2"></i>Corporate &amp; business websites</li>
+								<li><i class="fas fa-check text-cyan-400 mr-2"></i>Web portals &amp; dashboards</li>
+								<li><i class="fas fa-check text-cyan-400 mr-2"></i>E-commerce solutions</li>
+							</ul>
+							<a
+								href="#contact"
+								@click="$dispatch('select-service', 'Website & Web App Development')"
+								class="mt-auto pt-6 inline-flex items-center text-sm font-semibold text-cyan-400 hover:text-cyan-300"
+							>
+								Request a quote <i class="fas fa-arrow-right ml-2 text-xs"></i>
+							</a>
 						</div>
 
 						<!-- Service 2 -->
-						<div class="glass glass-hover rounded-2xl p-8 card-3d group">
+						<div class="glass glass-hover rounded-2xl p-8 group flex flex-col">
 							<div
-								class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+								class="w-14 h-14 bg-gradient-to-br from-pink-500 to-rose-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
 							>
-								<i class="fas fa-server text-2xl"></i>
+								<i class="fas fa-mobile-screen-button text-xl"></i>
 							</div>
-							<h3 class="text-2xl font-bold mb-4 group-hover:text-purple-400 transition-colors">Backend Development</h3>
+							<h3 class="text-xl font-bold mb-3 group-hover:text-pink-400 transition-colors">Mobile App Development</h3>
 							<p class="text-gray-400 leading-relaxed">
-								Building robust, scalable server-side applications with Laravel, Node.js, and modern databases. Ensuring
-								data integrity, security, and high-performance APIs that power seamless experiences.
+								Cross-platform iOS and Android apps built with React Native, taken from concept all the way to the Play
+								Store and App Store.
 							</p>
-							<div class="mt-6 flex flex-wrap gap-2">
-								<span class="text-xs px-3 py-1 bg-purple-500/20 rounded-full text-purple-400">Laravel</span>
-								<span class="text-xs px-3 py-1 bg-purple-500/20 rounded-full text-purple-400">Node.js</span>
-								<span class="text-xs px-3 py-1 bg-purple-500/20 rounded-full text-purple-400">MySQL</span>
-							</div>
+							<ul class="mt-5 space-y-2 text-sm text-gray-300">
+								<li><i class="fas fa-check text-pink-400 mr-2"></i>iOS &amp; Android apps</li>
+								<li><i class="fas fa-check text-pink-400 mr-2"></i>App store publishing</li>
+								<li><i class="fas fa-check text-pink-400 mr-2"></i>API &amp; backend integration</li>
+							</ul>
+							<a
+								href="#contact"
+								@click="$dispatch('select-service', 'Mobile App Development')"
+								class="mt-auto pt-6 inline-flex items-center text-sm font-semibold text-pink-400 hover:text-pink-300"
+							>
+								Request a quote <i class="fas fa-arrow-right ml-2 text-xs"></i>
+							</a>
 						</div>
 
 						<!-- Service 3 -->
-						<div class="glass glass-hover rounded-2xl p-8 card-3d group">
+						<div class="glass glass-hover rounded-2xl p-8 group flex flex-col">
 							<div
-								class="w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+								class="w-14 h-14 bg-gradient-to-br from-purple-500 to-fuchsia-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
 							>
-								<i class="fas fa-mobile-alt text-2xl"></i>
+								<i class="fas fa-layer-group text-xl"></i>
 							</div>
-							<h3 class="text-2xl font-bold mb-4 group-hover:text-pink-400 transition-colors">
-								Mobile App Development
+							<h3 class="text-xl font-bold mb-3 group-hover:text-purple-400 transition-colors">
+								Custom Software &amp; SaaS
 							</h3>
 							<p class="text-gray-400 leading-relaxed">
-								Creating high-performance cross-platform mobile applications with React Native. Delivering native-like
-								experiences that engage users and drive business growth on iOS and Android.
+								Tailor-made systems that automate your operations, including HR, school management, bookings, inventory
+								and more.
 							</p>
-							<div class="mt-6 flex flex-wrap gap-2">
-								<span class="text-xs px-3 py-1 bg-pink-500/20 rounded-full text-pink-400">React Native</span>
-								<span class="text-xs px-3 py-1 bg-pink-500/20 rounded-full text-pink-400">iOS</span>
-								<span class="text-xs px-3 py-1 bg-pink-500/20 rounded-full text-pink-400">Android</span>
+							<ul class="mt-5 space-y-2 text-sm text-gray-300">
+								<li><i class="fas fa-check text-purple-400 mr-2"></i>Business process automation</li>
+								<li><i class="fas fa-check text-purple-400 mr-2"></i>SaaS product development</li>
+								<li><i class="fas fa-check text-purple-400 mr-2"></i>Third-party integrations</li>
+							</ul>
+							<a
+								href="#contact"
+								@click="$dispatch('select-service', 'Custom Software & SaaS')"
+								class="mt-auto pt-6 inline-flex items-center text-sm font-semibold text-purple-400 hover:text-purple-300"
+							>
+								Request a quote <i class="fas fa-arrow-right ml-2 text-xs"></i>
+							</a>
+						</div>
+
+						<!-- Service 4 -->
+						<div class="glass glass-hover rounded-2xl p-8 group flex flex-col">
+							<div
+								class="w-14 h-14 bg-gradient-to-br from-sky-500 to-indigo-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+							>
+								<i class="fas fa-cloud text-xl"></i>
+							</div>
+							<h3 class="text-xl font-bold mb-3 group-hover:text-sky-400 transition-colors">
+								Cloud Hosting &amp; DevOps
+							</h3>
+							<p class="text-gray-400 leading-relaxed">
+								Reliable infrastructure on AWS, covering deployment, domains, business email, backups and monitoring.
+							</p>
+							<ul class="mt-5 space-y-2 text-sm text-gray-300">
+								<li><i class="fas fa-check text-sky-400 mr-2"></i>AWS setup &amp; migration</li>
+								<li><i class="fas fa-check text-sky-400 mr-2"></i>Domains, hosting &amp; email</li>
+								<li><i class="fas fa-check text-sky-400 mr-2"></i>CI/CD &amp; monitoring</li>
+							</ul>
+							<a
+								href="#contact"
+								@click="$dispatch('select-service', 'Cloud Hosting & DevOps')"
+								class="mt-auto pt-6 inline-flex items-center text-sm font-semibold text-sky-400 hover:text-sky-300"
+							>
+								Request a quote <i class="fas fa-arrow-right ml-2 text-xs"></i>
+							</a>
+						</div>
+
+						<!-- Service 5 -->
+						<div class="glass glass-hover rounded-2xl p-8 group flex flex-col">
+							<div
+								class="w-14 h-14 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+							>
+								<i class="fas fa-pen-ruler text-xl"></i>
+							</div>
+							<h3 class="text-xl font-bold mb-3 group-hover:text-amber-400 transition-colors">
+								UI/UX &amp; Product Design
+							</h3>
+							<p class="text-gray-400 leading-relaxed">
+								User-centred interfaces and interactive prototypes that make your product easy and enjoyable to use.
+							</p>
+							<ul class="mt-5 space-y-2 text-sm text-gray-300">
+								<li><i class="fas fa-check text-amber-400 mr-2"></i>Wireframes &amp; prototypes</li>
+								<li><i class="fas fa-check text-amber-400 mr-2"></i>Design systems</li>
+								<li><i class="fas fa-check text-amber-400 mr-2"></i>Usability reviews</li>
+							</ul>
+							<a
+								href="#contact"
+								@click="$dispatch('select-service', 'UI/UX & Product Design')"
+								class="mt-auto pt-6 inline-flex items-center text-sm font-semibold text-amber-400 hover:text-amber-300"
+							>
+								Request a quote <i class="fas fa-arrow-right ml-2 text-xs"></i>
+							</a>
+						</div>
+
+						<!-- Service 6 -->
+						<div class="glass glass-hover rounded-2xl p-8 group flex flex-col">
+							<div
+								class="w-14 h-14 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+							>
+								<i class="fas fa-headset text-xl"></i>
+							</div>
+							<h3 class="text-xl font-bold mb-3 group-hover:text-emerald-400 transition-colors">
+								IT Consulting &amp; Support
+							</h3>
+							<p class="text-gray-400 leading-relaxed">
+								Expert guidance on choosing the right technology, plus ongoing maintenance that keeps your systems
+								running smoothly.
+							</p>
+							<ul class="mt-5 space-y-2 text-sm text-gray-300">
+								<li><i class="fas fa-check text-emerald-400 mr-2"></i>Technology strategy</li>
+								<li><i class="fas fa-check text-emerald-400 mr-2"></i>Code reviews &amp; audits</li>
+								<li><i class="fas fa-check text-emerald-400 mr-2"></i>Maintenance retainers</li>
+							</ul>
+							<a
+								href="#contact"
+								@click="$dispatch('select-service', 'IT Consulting & Support')"
+								class="mt-auto pt-6 inline-flex items-center text-sm font-semibold text-emerald-400 hover:text-emerald-300"
+							>
+								Request a quote <i class="fas fa-arrow-right ml-2 text-xs"></i>
+							</a>
+						</div>
+					</div>
+
+					<!-- How We Work -->
+					<div class="mt-20">
+						<h3 class="text-2xl md:text-3xl font-bold text-center mb-10">How We Work</h3>
+						<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+							<div class="glass rounded-2xl p-6">
+								<span class="text-4xl font-bold gradient-text">01</span>
+								<h4 class="text-lg font-semibold mt-4 mb-2">Discovery</h4>
+								<p class="text-gray-400 text-sm leading-relaxed">
+									We learn about your business, goals and users, then agree on scope, timeline and budget.
+								</p>
+							</div>
+							<div class="glass rounded-2xl p-6">
+								<span class="text-4xl font-bold gradient-text">02</span>
+								<h4 class="text-lg font-semibold mt-4 mb-2">Design</h4>
+								<p class="text-gray-400 text-sm leading-relaxed">
+									We map out the solution and design the interface so you can see it before we build it.
+								</p>
+							</div>
+							<div class="glass rounded-2xl p-6">
+								<span class="text-4xl font-bold gradient-text">03</span>
+								<h4 class="text-lg font-semibold mt-4 mb-2">Build</h4>
+								<p class="text-gray-400 text-sm leading-relaxed">
+									We develop in clear milestones and share progress regularly for your feedback.
+								</p>
+							</div>
+							<div class="glass rounded-2xl p-6">
+								<span class="text-4xl font-bold gradient-text">04</span>
+								<h4 class="text-lg font-semibold mt-4 mb-2">Launch &amp; Support</h4>
+								<p class="text-gray-400 text-sm leading-relaxed">
+									We deploy, hand over with training, and provide ongoing maintenance and improvements.
+								</p>
 							</div>
 						</div>
 					</div>
@@ -630,7 +900,8 @@
 				<div class="fade-in" x-intersect="$el.classList.add('visible')">
 					<!-- Section Title -->
 					<div class="text-center mb-16">
-						<h2 class="text-4xl md:text-5xl font-bold gradient-text inline-block">Tech Stack</h2>
+						<p class="text-sm uppercase tracking-widest text-cyan-400 font-semibold mb-3">Tools of the Trade</p>
+						<h2 class="text-4xl md:text-5xl font-bold gradient-text inline-block">Technologies We Use</h2>
 						<div class="w-24 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 mx-auto mt-4 rounded-full"></div>
 					</div>
 
@@ -846,10 +1117,11 @@
 				<div class="fade-in" x-intersect="$el.classList.add('visible')">
 					<!-- Section Title -->
 					<div class="text-center mb-16">
-						<h2 class="text-4xl md:text-5xl font-bold gradient-text inline-block">Featured Projects</h2>
+						<p class="text-sm uppercase tracking-widest text-cyan-400 font-semibold mb-3">Portfolio</p>
+						<h2 class="text-4xl md:text-5xl font-bold gradient-text inline-block">Selected Work</h2>
 						<div class="w-24 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 mx-auto mt-4 rounded-full"></div>
 						<p class="text-gray-400 mt-6 max-w-2xl mx-auto">
-							A showcase of my recent work across web and mobile platforms
+							Platforms and products I've built and shipped for companies, institutions and independent ventures
 						</p>
 					</div>
 
@@ -982,16 +1254,17 @@
 			</div>
 		</section>
 
-		<!-- Contact Section with AI-like Interface -->
+		<!-- Contact Section -->
 		<section id="contact" class="relative py-20 px-4 z-10">
 			<div class="max-w-5xl mx-auto">
 				<div class="fade-in" x-intersect="$el.classList.add('visible')">
 					<!-- Section Title -->
 					<div class="text-center mb-16">
-						<h2 class="text-4xl md:text-5xl font-bold gradient-text inline-block">Let's Connect</h2>
+						<p class="text-sm uppercase tracking-widest text-cyan-400 font-semibold mb-3">Get in Touch</p>
+						<h2 class="text-4xl md:text-5xl font-bold gradient-text inline-block">Start a Project</h2>
 						<div class="w-24 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 mx-auto mt-4 rounded-full"></div>
 						<p class="text-gray-400 mt-6 max-w-2xl mx-auto">
-							Have a project in mind? Let's create something amazing together
+							Tell us about your project and we'll get back to you with next steps and a tailored quote
 						</p>
 					</div>
 
@@ -1005,9 +1278,14 @@
 									>
 										<i class="fas fa-envelope text-xl"></i>
 									</div>
-									<div>
+									<div class="min-w-0">
 										<h4 class="font-semibold text-lg mb-2">Email</h4>
-										<p class="text-gray-400">codewithchase@gmail.com</p>
+										<a
+											href="mailto:codewithchase@gmail.com"
+											class="text-gray-400 hover:text-cyan-400 transition-colors break-all"
+										>
+											codewithchase@gmail.com
+										</a>
 									</div>
 								</div>
 							</div>
@@ -1032,21 +1310,20 @@
 								</div>
 							</div>
 
-							<!-- <div class="glass glass-hover rounded-2xl p-6">
+							<div class="glass glass-hover rounded-2xl p-6">
 								<div class="flex items-start space-x-4">
 									<div
 										class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center flex-shrink-0"
 									>
-										<i class="fas fa-phone text-xl"></i>
+										<i class="fas fa-building text-xl"></i>
 									</div>
 									<div>
-										<h4 class="font-semibold text-lg mb-2">Phone</h4>
-										<a href="tel:+2347040214836" class="text-gray-400 hover:text-purple-400 transition-colors">
-											+234 704 021 4836
-										</a>
+										<h4 class="font-semibold text-lg mb-2">Office</h4>
+										<p class="text-gray-400">Ajobaba Technologies</p>
+										<p class="text-gray-400">Makurdi, Benue State, Nigeria</p>
 									</div>
 								</div>
-							</div> -->
+							</div>
 
 							<!-- Social Links -->
 							<div class="glass rounded-2xl p-6">
@@ -1055,6 +1332,7 @@
 									<a
 										href="https://github.com/PaulChase"
 										target="_blank"
+										aria-label="GitHub"
 										class="w-10 h-10 flex items-center justify-center glass glass-hover rounded-lg"
 									>
 										<i class="fab fa-github"></i>
@@ -1062,6 +1340,7 @@
 									<a
 										href="https://www.linkedin.com/in/paul-ajonye-1b9b7b3b6"
 										target="_blank"
+										aria-label="LinkedIn"
 										class="w-10 h-10 flex items-center justify-center glass glass-hover rounded-lg"
 									>
 										<i class="fab fa-linkedin"></i>
@@ -1069,6 +1348,7 @@
 									<a
 										href="https://twitter.com/AjonyePaul/"
 										target="_blank"
+										aria-label="Twitter"
 										class="w-10 h-10 flex items-center justify-center glass glass-hover rounded-lg"
 									>
 										<i class="fab fa-twitter"></i>
@@ -1076,6 +1356,7 @@
 									<a
 										href="https://medium.com/@ajonyepaul"
 										target="_blank"
+										aria-label="Medium"
 										class="w-10 h-10 flex items-center justify-center glass glass-hover rounded-lg"
 									>
 										<i class="fab fa-medium"></i>
@@ -1085,7 +1366,7 @@
 						</div>
 
 						<!-- Contact Form -->
-						<div class="glass rounded-2xl p-8" x-data="contact">
+						<div class="glass rounded-2xl p-8" x-data="contact" @select-service.window="service = $event.detail">
 							<form @submit.prevent="handleSubmit" class="space-y-6">
 								<div>
 									<label for="name" class="block text-sm font-medium mb-2 text-gray-300">Your Name</label>
@@ -1112,14 +1393,37 @@
 								</div>
 
 								<div>
-									<label for="message" class="block text-sm font-medium mb-2 text-gray-300">Your Message</label>
+									<label for="service" class="block text-sm font-medium mb-2 text-gray-300">Service Needed</label>
+									<div class="relative">
+										<select
+											id="service"
+											x-model="service"
+											class="appearance-none [color-scheme:dark] w-full px-4 py-3 pr-10 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-purple-500 transition-colors text-white"
+										>
+											<option value="">Select a service</option>
+											<option>Website &amp; Web App Development</option>
+											<option>Mobile App Development</option>
+											<option>Custom Software &amp; SaaS</option>
+											<option>Cloud Hosting &amp; DevOps</option>
+											<option>UI/UX &amp; Product Design</option>
+											<option>IT Consulting &amp; Support</option>
+											<option>Something else</option>
+										</select>
+										<i
+											class="fas fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-xs text-gray-400 pointer-events-none"
+										></i>
+									</div>
+								</div>
+
+								<div>
+									<label for="message" class="block text-sm font-medium mb-2 text-gray-300">Project Details</label>
 									<textarea
 										id="message"
 										x-model="message"
 										required
 										rows="4"
 										class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-purple-500 transition-colors text-white placeholder-gray-500 resize-none"
-										placeholder="Tell me about your project..."
+										placeholder="Tell us about your project, goals and timeline..."
 									></textarea>
 								</div>
 
@@ -1128,8 +1432,11 @@
 									class="neon-button w-full px-6 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg text-white font-semibold hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 transform hover:scale-105"
 								>
 									<i class="fas fa-paper-plane mr-2"></i>
-									Send Message
+									Send Enquiry
 								</button>
+								<p class="text-xs text-gray-500 text-center">
+									<i class="fab fa-whatsapp mr-1"></i>Your enquiry opens in WhatsApp, ready to send.
+								</p>
 							</form>
 						</div>
 					</div>
@@ -1138,20 +1445,69 @@
 		</section>
 
 		<!-- Footer -->
-		<footer class="relative py-12 px-4 border-t border-white/10 z-10">
+		<footer class="relative pt-16 pb-8 px-4 border-t border-white/10 z-10">
 			<div class="max-w-7xl mx-auto">
-				<div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-					<div class="text-center md:text-left">
-						<h3 class="text-2xl font-bold gradient-text mb-2">&lt;AP /&gt;</h3>
-						<p class="text-gray-400 text-sm">Building the future, one line of code at a time</p>
+				<div class="grid gap-10 md:grid-cols-4">
+					<div class="md:col-span-2">
+						<div class="flex items-center gap-3 mb-4">
+							<span
+								class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500 to-purple-600 flex items-center justify-center font-bold text-white"
+								>AT</span
+							>
+							<h3 class="text-xl font-bold">Ajobaba Technologies</h3>
+						</div>
+						<p class="text-gray-400 text-sm leading-relaxed max-w-md">
+							Web, mobile, cloud and custom software solutions for growing businesses. Founded and led by Ajonye Paul.
+						</p>
+						<p class="text-gray-500 text-xs mt-4">
+							CAC Business Name Reg. No. 9243491 &middot; Makurdi, Benue State, Nigeria
+						</p>
 					</div>
 
-					<div class="text-center md:text-right">
-						<p class="text-gray-400 text-sm">&copy; 2025 Ajonye Paul. All rights reserved.</p>
-						<p class="text-gray-500 text-xs mt-1">
-							Designed with <i class="fas fa-heart text-red-500"></i> and
-							<span class="text-purple-400">Tailwind CSS</span>
-						</p>
+					<div>
+						<h4 class="font-semibold mb-4">Company</h4>
+						<ul class="space-y-2 text-sm text-gray-400">
+							<li><a href="#about" class="hover:text-white transition-colors">About the Founder</a></li>
+							<li><a href="#company" class="hover:text-white transition-colors">Ajobaba Technologies</a></li>
+							<li><a href="#projects" class="hover:text-white transition-colors">Selected Work</a></li>
+							<li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
+						</ul>
+					</div>
+
+					<div>
+						<h4 class="font-semibold mb-4">Services</h4>
+						<ul class="space-y-2 text-sm text-gray-400">
+							<li><a href="#services" class="hover:text-white transition-colors">Web Development</a></li>
+							<li><a href="#services" class="hover:text-white transition-colors">Mobile Apps</a></li>
+							<li><a href="#services" class="hover:text-white transition-colors">Custom Software &amp; SaaS</a></li>
+							<li><a href="#services" class="hover:text-white transition-colors">Cloud &amp; DevOps</a></li>
+							<li><a href="#services" class="hover:text-white transition-colors">UI/UX Design</a></li>
+							<li><a href="#services" class="hover:text-white transition-colors">IT Consulting</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div
+					class="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500"
+				>
+					<p>&copy; <span x-text="new Date().getFullYear()">2026</span> Ajobaba Technologies. All rights reserved.</p>
+					<div class="flex items-center gap-5">
+						<a href="https://github.com/PaulChase" target="_blank" aria-label="GitHub" class="hover:text-white"
+							><i class="fab fa-github"></i
+						></a>
+						<a
+							href="https://www.linkedin.com/in/paul-ajonye-1b9b7b3b6"
+							target="_blank"
+							aria-label="LinkedIn"
+							class="hover:text-white"
+							><i class="fab fa-linkedin"></i
+						></a>
+						<a href="https://twitter.com/AjonyePaul/" target="_blank" aria-label="Twitter" class="hover:text-white"
+							><i class="fab fa-twitter"></i
+						></a>
+						<a href="https://medium.com/@ajonyepaul" target="_blank" aria-label="Medium" class="hover:text-white"
+							><i class="fab fa-medium"></i
+						></a>
 					</div>
 				</div>
 			</div>
@@ -1165,15 +1521,8 @@
 			document.addEventListener("alpine:init", () => {
 				// Main app data
 				Alpine.data("app", () => ({
-					isHovering: false,
 					typedText: "",
-					roles: [
-						"Full Stack Developer",
-						"React Specialist",
-						"Laravel Expert",
-						"Mobile App Developer",
-						"Problem Solver",
-					],
+					roles: ["Full Stack Engineer", "Tech Entrepreneur", "Mobile App Developer", "Software Consultant"],
 					currentRoleIndex: 0,
 					currentCharIndex: 0,
 					isDeleting: false,
@@ -1181,9 +1530,6 @@
 					init() {
 						// Initialize particles
 						this.createParticles();
-
-						// Initialize cursor
-						this.initCursor();
 
 						// Initialize typing effect
 						this.typeRole();
@@ -1211,35 +1557,6 @@
 
 							particlesContainer.appendChild(particle);
 						}
-					},
-
-					initCursor() {
-						if (window.innerWidth <= 768) return; // Skip on mobile
-
-						const cursorDot = this.$refs.cursorDot;
-						const cursorOutline = this.$refs.cursorOutline;
-
-						document.addEventListener("mousemove", (e) => {
-							const x = e.clientX;
-							const y = e.clientY;
-
-							cursorDot.style.left = `${x}px`;
-							cursorDot.style.top = `${y}px`;
-
-							cursorOutline.style.left = `${x}px`;
-							cursorOutline.style.top = `${y}px`;
-						});
-
-						// Add hover effect for interactive elements
-						const interactiveElements = document.querySelectorAll("a, button, input, textarea");
-						interactiveElements.forEach((el) => {
-							el.addEventListener("mouseenter", () => {
-								this.isHovering = true;
-							});
-							el.addEventListener("mouseleave", () => {
-								this.isHovering = false;
-							});
-						});
 					},
 
 					typeRole() {
@@ -1300,14 +1617,24 @@
 				Alpine.data("contact", () => ({
 					name: "",
 					email: "",
+					service: "",
 					message: "",
 					handleSubmit() {
-						const whatsappMessage = `Hello Paul,%0A%0AName: ${this.name}%0AEmail: ${this.email}%0A%0AMessage: ${this.message}`;
-						window.open(`https://wa.me/2347040214836?text=${whatsappMessage}`, "_blank");
+						const whatsappMessage = [
+							"Hello Paul,",
+							"",
+							`Name: ${this.name}`,
+							`Email: ${this.email}`,
+							`Service: ${this.service || "Not specified"}`,
+							"",
+							`Message: ${this.message}`,
+						].join("\n");
+						window.open(`https://wa.me/2347040214836?text=${encodeURIComponent(whatsappMessage)}`, "_blank");
 
 						// Reset form
 						this.name = "";
 						this.email = "";
+						this.service = "";
 						this.message = "";
 					},
 				}));
